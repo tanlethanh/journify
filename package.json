@@ -1,7 +1,6 @@
 {
   "name": "journify",
   "version": "0.1.0",
-  "description": "This is monorepo for Journify, including mobile application and backend services",
   "main": "index.js",
   "private": true,
   "workspaces": [
