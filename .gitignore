@@ -1,0 +1,5 @@
+.vscode
+.history
+.yarn
+
+node_modules
