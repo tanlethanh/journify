@@ -8,7 +8,7 @@ const inter = Inter({ subsets: ['latin'] });
 export const metadata: Metadata = {
 	title: 'Journify',
 	description:
-		'A trusted, memorable, and enjoyable travel experiences mobile application',
+		'A trusted, memorable, and enjoyable travel experience mobile application',
 };
 
 export default function RootLayout({

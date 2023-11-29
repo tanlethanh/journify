@@ -1,6 +1,6 @@
 # Journify
 
-A trusted, memorable, and enjoyable travel experiences mobile application
+A trusted, memorable, and enjoyable travel experience mobile application
 
 ## References
 
