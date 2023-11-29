@@ -1,16 +1,28 @@
-import { ImageBackground, StyleSheet, Text, View } from 'react-native';
+import { ImageBackground, StatusBar, StyleSheet, View } from 'react-native';
+import Animated, { FadeInDown } from 'react-native-reanimated';
 
 const Splash = () => {
 	return (
 		<View style={styles.container}>
+			<StatusBar barStyle={'light-content'} />
 			<ImageBackground
 				style={styles.backgroundImage}
 				source={require('@/assets/images/vietnam-road.jpg')}
 			/>
 
 			<View style={styles.contentContainer}>
-				<Text style={styles.appName}>Journify</Text>
-				<Text style={styles.slogan}>Life is a journey, enjoy the ride</Text>
+				<Animated.Text
+					style={styles.appName}
+					entering={FadeInDown.duration(800)}
+				>
+					Journify
+				</Animated.Text>
+				<Animated.Text
+					style={styles.slogan}
+					entering={FadeInDown.delay(500).duration(800)}
+				>
+					Life is a journey, enjoy the ride
+				</Animated.Text>
 			</View>
 		</View>
 	);

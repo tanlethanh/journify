@@ -1,4 +1,4 @@
-import { Platform, StatusBar, StyleSheet } from 'react-native';
+import { StatusBar, StyleSheet } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Provider as StateProvider } from 'react-redux';
 import { NavigationContainer } from '@react-navigation/native';
@@ -7,7 +7,6 @@ import Router from './utils/Router';
 import { store } from './store';
 
 function App(): JSX.Element {
-	console.log(StatusBar.currentHeight, '<-- status bar', Platform.OS);
 	return (
 		<StateProvider store={store}>
 			<NavigationContainer>
