@@ -1,18 +1,21 @@
 import { ImageBackground, StatusBar, StyleSheet, View } from 'react-native';
 import Animated, { FadeIn, FadeInDown } from 'react-native-reanimated';
 
-import { NextButton, PlaceTag } from './components';
+import { NextButton, PlaceTag, SamplePost } from './components';
 
-export const FirstOnboarding = () => {
+export const SecondOnboarding = () => {
 	return (
 		<View style={styles.container}>
 			<StatusBar barStyle={'light-content'} />
 			<ImageBackground
 				style={styles.backgroundImage}
-				source={require('@/assets/images/tran-phu.png')}
+				source={require('@/assets/images/mountain.png')}
 			/>
 
-			<PlaceTag style={styles.placeTag} title="Tran Phu Street" />
+			<View style={styles.mainContainer}>
+				<PlaceTag title="Phu Son Mountain" />
+				<SamplePost />
+			</View>
 
 			<Animated.View
 				style={styles.contentContainer}
@@ -22,13 +25,13 @@ export const FirstOnboarding = () => {
 					style={styles.title}
 					entering={FadeInDown.delay(800).duration(1000)}
 				>
-					Capture
+					Share
 				</Animated.Text>
 				<Animated.Text
 					style={styles.description}
 					entering={FadeInDown.delay(1300).duration(1000)}
 				>
-					A traveling social media for capturing the moments.
+					Share your feeling to the world.
 				</Animated.Text>
 
 				<Animated.View entering={FadeInDown.delay(3000).duration(800)}>
@@ -39,7 +42,7 @@ export const FirstOnboarding = () => {
 	);
 };
 
-export default FirstOnboarding;
+export default SecondOnboarding;
 
 const styles = StyleSheet.create({
 	container: {
@@ -53,10 +56,12 @@ const styles = StyleSheet.create({
 		right: 0,
 		bottom: 0,
 	},
-	placeTag: {
+	mainContainer: {
 		position: 'absolute',
 		top: 40,
 		left: 16,
+		alignItems: 'flex-start',
+		gap: 30,
 	},
 	contentContainer: {
 		position: 'absolute',
