@@ -34,7 +34,7 @@ export const SamplePost: FC<Props> = ({ style }) => {
 
 			<View>
 				<Text style={styles.content}>
-					I’m really happy for this journey, that’s life!!!
+					I’m really happy for this journey, that’s wonderful life!!!
 				</Text>
 			</View>
 		</Animated.View>

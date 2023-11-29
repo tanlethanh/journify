@@ -7,7 +7,7 @@ const Splash = () => {
 			<StatusBar barStyle={'light-content'} />
 			<ImageBackground
 				style={styles.backgroundImage}
-				source={require('@/assets/images/vietnam-road.jpg')}
+				source={require('@/assets/images/vietnam-road.png')}
 			/>
 
 			<Animated.View
