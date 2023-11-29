@@ -26,9 +26,9 @@ export const SamplePost: FC<Props> = ({ style }) => {
 							style={styles.tickImage}
 							source={require('@/assets/images/tick.png')}
 						/>
-						<Text>@tan_thomasle · 13 Nov</Text>
+						<Text style={styles.grayText}>@tan_thomasle · 13 Nov</Text>
 					</View>
-					<Text>312 discovery</Text>
+					<Text style={styles.grayText}>312 discovery</Text>
 				</View>
 			</View>
 
@@ -71,5 +71,9 @@ const styles = StyleSheet.create({
 	},
 	content: {
 		fontSize: 24,
+		color: '#000000',
+	},
+	grayText: {
+		color: 'gray',
 	},
 });
