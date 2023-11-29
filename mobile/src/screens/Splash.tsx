@@ -1,5 +1,5 @@
 import { ImageBackground, StatusBar, StyleSheet, View } from 'react-native';
-import Animated, { FadeInDown } from 'react-native-reanimated';
+import Animated, { FadeIn, FadeInDown } from 'react-native-reanimated';
 
 const Splash = () => {
 	return (
@@ -10,20 +10,23 @@ const Splash = () => {
 				source={require('@/assets/images/vietnam-road.jpg')}
 			/>
 
-			<View style={styles.contentContainer}>
+			<Animated.View
+				style={styles.contentContainer}
+				entering={FadeIn.delay(500).duration(800)}
+			>
 				<Animated.Text
 					style={styles.appName}
-					entering={FadeInDown.duration(800)}
+					entering={FadeInDown.delay(800).duration(1000)}
 				>
 					Journify
 				</Animated.Text>
 				<Animated.Text
 					style={styles.slogan}
-					entering={FadeInDown.delay(500).duration(800)}
+					entering={FadeInDown.delay(1300).duration(1000)}
 				>
 					Life is a journey, enjoy the ride
 				</Animated.Text>
-			</View>
+			</Animated.View>
 		</View>
 	);
 };
@@ -43,7 +46,11 @@ const styles = StyleSheet.create({
 		bottom: 0,
 	},
 	contentContainer: {
-		flex: 1,
+		position: 'absolute',
+		top: 0,
+		left: 0,
+		right: 0,
+		bottom: 0,
 		backgroundColor: 'rgba(0, 0, 0, 0.4)',
 		justifyContent: 'center',
 		alignItems: 'center',
