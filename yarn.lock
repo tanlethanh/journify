@@ -3722,7 +3722,7 @@ __metadata:
   resolution: "@journify/landing@workspace:landing"
   dependencies:
     "@types/node": "npm:^20"
-    "@types/react": "npm:^18"
+    "@types/react": "npm:^18.2.37"
     "@types/react-dom": "npm:^18"
     autoprefixer: "npm:^10.0.1"
     aws-cdk-lib: "npm:2.110.1"
@@ -5239,7 +5239,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:*, @types/react@npm:^18":
+"@types/react@npm:*":
   version: 18.2.38
   resolution: "@types/react@npm:18.2.38"
   dependencies:
