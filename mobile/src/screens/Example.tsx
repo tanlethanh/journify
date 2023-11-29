@@ -1,7 +1,6 @@
 import type { PropsWithChildren } from 'react';
 import {
 	ScrollView,
-	StatusBar,
 	StyleSheet,
 	Text,
 	useColorScheme,
@@ -56,10 +55,6 @@ export function Example(): JSX.Element {
 
 	return (
 		<View style={backgroundStyle}>
-			<StatusBar
-				barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-				backgroundColor={backgroundStyle.backgroundColor}
-			/>
 			<ScrollView
 				contentInsetAdjustmentBehavior="automatic"
 				style={backgroundStyle}

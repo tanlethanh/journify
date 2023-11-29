@@ -14,6 +14,9 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		7699B88040F8A987B510C191 /* libPods-Journify-JournifyTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-Journify-JournifyTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		CB1CB9F67752447EB19E4837 /* OldStandardTT-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9507533F25E3425FB52EB5C4 /* OldStandardTT-Bold.ttf */; };
+		D62A8938E0794CAC9E908879 /* OldStandardTT-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6CC1B080B6C243BDA66D9947 /* OldStandardTT-Italic.ttf */; };
+		79881EECB6154248BF495573 /* OldStandardTT-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 615C60E62A4249B980386605 /* OldStandardTT-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +47,9 @@
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Journify/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-Journify-JournifyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Journify-JournifyTests.release.xcconfig"; path = "Target Support Files/Pods-Journify-JournifyTests/Pods-Journify-JournifyTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		9507533F25E3425FB52EB5C4 /* OldStandardTT-Bold.ttf */ = {isa = PBXFileReference; name = "OldStandardTT-Bold.ttf"; path = "../assets/fonts/OldStandardTT-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		6CC1B080B6C243BDA66D9947 /* OldStandardTT-Italic.ttf */ = {isa = PBXFileReference; name = "OldStandardTT-Italic.ttf"; path = "../assets/fonts/OldStandardTT-Italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		615C60E62A4249B980386605 /* OldStandardTT-Regular.ttf */ = {isa = PBXFileReference; name = "OldStandardTT-Regular.ttf"; path = "../assets/fonts/OldStandardTT-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +128,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
+				967915AB67A24003A8E3FAF7 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -147,6 +154,17 @@
 			);
 			path = Pods;
 			sourceTree = "<group>";
+		};
+		967915AB67A24003A8E3FAF7 /* Resources */ = {
+			isa = "PBXGroup";
+			children = (
+				9507533F25E3425FB52EB5C4 /* OldStandardTT-Bold.ttf */,
+				6CC1B080B6C243BDA66D9947 /* OldStandardTT-Italic.ttf */,
+				615C60E62A4249B980386605 /* OldStandardTT-Regular.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+			path = "";
 		};
 /* End PBXGroup section */
 
@@ -244,6 +262,9 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				CB1CB9F67752447EB19E4837 /* OldStandardTT-Bold.ttf in Resources */,
+				D62A8938E0794CAC9E908879 /* OldStandardTT-Italic.ttf in Resources */,
+				79881EECB6154248BF495573 /* OldStandardTT-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

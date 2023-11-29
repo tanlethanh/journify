@@ -1,0 +1,17 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "assets/fonts/OldStandardTT-Bold.ttf",
+      "sha1": "a991ab5f1899543d2974b4237ac8ee2bb7b500a4"
+    },
+    {
+      "path": "assets/fonts/OldStandardTT-Italic.ttf",
+      "sha1": "301263930f4aeec8a2c60c9d66014e39e541bfdc"
+    },
+    {
+      "path": "assets/fonts/OldStandardTT-Regular.ttf",
+      "sha1": "2bf0ec1823066de2701f515c719d78c2573c2bfd"
+    }
+  ]
+}
