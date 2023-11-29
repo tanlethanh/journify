@@ -1,7 +1,17 @@
+import { useEffect } from 'react';
 import { ImageBackground, StatusBar, StyleSheet, View } from 'react-native';
 import Animated, { FadeIn, FadeInDown } from 'react-native-reanimated';
+import { useNavigation } from '@react-navigation/native';
 
 const Splash = () => {
+	const navigation = useNavigation();
+
+	useEffect(() => {
+		setTimeout(() => {
+			navigation.navigate('FirstOnBoarding' as never);
+		}, 3500);
+	}, []);
+
 	return (
 		<View style={styles.container}>
 			<StatusBar barStyle={'light-content'} />

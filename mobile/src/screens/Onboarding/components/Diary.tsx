@@ -5,7 +5,7 @@ export const Diary = () => {
 	return (
 		<Animated.View
 			style={styles.container}
-			entering={FadeInUp.delay(300).duration(500)}
+			entering={FadeInUp.delay(500).duration(500)}
 		>
 			<View style={styles.timeColumn} />
 			<View style={styles.diaryContainer}>

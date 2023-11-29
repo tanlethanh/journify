@@ -1,9 +1,15 @@
 import { ImageBackground, StatusBar, StyleSheet, View } from 'react-native';
 import Animated, { FadeIn, FadeInDown } from 'react-native-reanimated';
+import { useNavigation } from '@react-navigation/native';
 
 import { NextButton, PlaceTag, SamplePost } from './components';
 
 export const SecondOnBoarding = () => {
+	const navigation = useNavigation();
+	const handlePressNext = () => {
+		navigation.navigate('ThirdOnBoarding' as never);
+	};
+
 	return (
 		<View style={styles.container}>
 			<StatusBar barStyle={'light-content'} />
@@ -35,7 +41,10 @@ export const SecondOnBoarding = () => {
 				</Animated.Text>
 
 				<Animated.View entering={FadeInDown.delay(3000).duration(800)}>
-					<NextButton style={{ alignSelf: 'flex-end' }} />
+					<NextButton
+						style={{ alignSelf: 'flex-end' }}
+						onPress={handlePressNext}
+					/>
 				</Animated.View>
 			</Animated.View>
 		</View>

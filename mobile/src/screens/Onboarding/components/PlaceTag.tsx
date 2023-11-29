@@ -12,7 +12,7 @@ export const PlaceTag: FC<Props> = ({ title, style }) => {
 	return (
 		<Animated.View
 			style={[styles.container, style]}
-			entering={FadeInUp.duration(500)}
+			entering={FadeInUp.duration(800)}
 		>
 			<Text style={styles.content}>{title}</Text>
 		</Animated.View>

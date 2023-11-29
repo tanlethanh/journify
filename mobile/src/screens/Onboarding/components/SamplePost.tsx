@@ -11,7 +11,7 @@ export const SamplePost: FC<Props> = ({ style }) => {
 	return (
 		<Animated.View
 			style={[styles.container, style]}
-			entering={FadeInUp.delay(300).duration(500)}
+			entering={FadeInUp.delay(500).duration(500)}
 		>
 			<View style={styles.headContainer}>
 				<Image
