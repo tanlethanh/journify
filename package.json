@@ -6,7 +6,8 @@
   "workspaces": [
     "landing",
     "mobile",
-    "backend"
+    "backend",
+    "packages/*"
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -17,6 +18,7 @@
   "devDependencies": {
     "@walless/eslint-config": "^0.0.7",
     "eslint": "^8.54.0",
-    "prettier": "^3.1.0"
+    "prettier": "^3.1.0",
+    "typescript": "^5"
   }
 }
