@@ -1,18 +1,21 @@
 import { ImageBackground, StatusBar, StyleSheet, View } from 'react-native';
 import Animated, { FadeIn, FadeInDown } from 'react-native-reanimated';
 
-import { NextButton, PlaceTag } from './components';
+import { Diary, NextButton, PlaceTag } from './components';
 
-export const FirstOnBoarding = () => {
+export const ThirdOnBoarding = () => {
 	return (
 		<View style={styles.container}>
 			<StatusBar barStyle={'light-content'} />
 			<ImageBackground
 				style={styles.backgroundImage}
-				source={require('@/assets/images/tran-phu.png')}
+				source={require('@/assets/images/vietnam-field.png')}
 			/>
 
-			<PlaceTag style={styles.placeTag} title="Tran Phu Street" />
+			<View style={styles.mainContainer}>
+				<PlaceTag title="Phu Son Mountain" />
+				<Diary />
+			</View>
 
 			<Animated.View
 				style={styles.contentContainer}
@@ -22,13 +25,13 @@ export const FirstOnBoarding = () => {
 					style={styles.title}
 					entering={FadeInDown.delay(800).duration(1000)}
 				>
-					Capture
+					Keep
 				</Animated.Text>
 				<Animated.Text
 					style={styles.description}
 					entering={FadeInDown.delay(1300).duration(1000)}
 				>
-					A traveling social media for capturing the moments.
+					Keep of all the journeys in your memory.
 				</Animated.Text>
 
 				<Animated.View entering={FadeInDown.delay(3000).duration(800)}>
@@ -39,7 +42,7 @@ export const FirstOnBoarding = () => {
 	);
 };
 
-export default FirstOnBoarding;
+export default ThirdOnBoarding;
 
 const styles = StyleSheet.create({
 	container: {
@@ -53,10 +56,13 @@ const styles = StyleSheet.create({
 		right: 0,
 		bottom: 0,
 	},
-	placeTag: {
+	mainContainer: {
 		position: 'absolute',
 		top: 40,
 		left: 16,
+		right: 60,
+		alignItems: 'flex-start',
+		gap: 30,
 	},
 	contentContainer: {
 		position: 'absolute',
@@ -65,7 +71,7 @@ const styles = StyleSheet.create({
 		bottom: 0,
 		backgroundColor: 'rgba(0, 0, 0, 0.4)',
 		gap: 14,
-		height: 260,
+		height: 220,
 		padding: 16,
 		borderTopLeftRadius: 20,
 		borderTopRightRadius: 20,

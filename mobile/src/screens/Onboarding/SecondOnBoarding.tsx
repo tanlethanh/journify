@@ -3,7 +3,7 @@ import Animated, { FadeIn, FadeInDown } from 'react-native-reanimated';
 
 import { NextButton, PlaceTag, SamplePost } from './components';
 
-export const SecondOnboarding = () => {
+export const SecondOnBoarding = () => {
 	return (
 		<View style={styles.container}>
 			<StatusBar barStyle={'light-content'} />
@@ -42,7 +42,7 @@ export const SecondOnboarding = () => {
 	);
 };
 
-export default SecondOnboarding;
+export default SecondOnBoarding;
 
 const styles = StyleSheet.create({
 	container: {
@@ -60,6 +60,7 @@ const styles = StyleSheet.create({
 		position: 'absolute',
 		top: 40,
 		left: 16,
+		right: 16,
 		alignItems: 'flex-start',
 		gap: 30,
 	},
