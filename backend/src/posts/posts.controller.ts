@@ -18,26 +18,26 @@ export class PostsController {
 
 	@Post()
 	create(@Body() createPostDto: CreatePostDto) {
-		return this.postsService.create(createPostDto);
+		return 'create post' + createPostDto;
 	}
 
 	@Get()
 	findAll() {
-		return this.postsService.findAll();
+		return 'get all';
 	}
 
 	@Get(':id')
-	findOne(@Param('id') id: string) {
-		return this.postsService.findOne(+id);
+	async getPostById(@Param('id') id: string) {
+		return 'get post by id' + id;
 	}
 
 	@Patch(':id')
 	update(@Param('id') id: string, @Body() updatePostDto: UpdatePostDto) {
-		return this.postsService.update(+id, updatePostDto);
+		return 'update post by id' + id + updatePostDto;
 	}
 
 	@Delete(':id')
 	remove(@Param('id') id: string) {
-		return this.postsService.remove(+id);
+		return 'delete post by id' + id;
 	}
 }
