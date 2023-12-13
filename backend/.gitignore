@@ -36,3 +36,7 @@ lerna-debug.log*
 
 .env
 prisma/migrations
+
+**/.terraform/
+**/**.pem
+**/*.tfstate*
