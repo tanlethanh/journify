@@ -11,14 +11,13 @@ resource "aws_apigatewayv2_stage" "staging" {
 }
 
 resource "aws_apigatewayv2_api_mapping" "journify_v1" {
-  api_id          = aws_apigatewayv2_api.journify.id
-  domain_name     = aws_apigatewayv2_domain_name.journify.id
-  stage           = aws_apigatewayv2_stage.staging.id
-  api_mapping_key = "v1"
+  api_id      = aws_apigatewayv2_api.journify.id
+  domain_name = aws_apigatewayv2_domain_name.journify.id
+  stage       = aws_apigatewayv2_stage.staging.id
 }
 
 output "custom_domain_api_v1" {
-  value = "https://${aws_apigatewayv2_api_mapping.journify_v1.domain_name}/${aws_apigatewayv2_api_mapping.journify_v1.api_mapping_key}"
+  value = "https://${aws_apigatewayv2_api_mapping.journify_v1.domain_name}"
 }
 
 resource "aws_apigatewayv2_integration" "journify" {
