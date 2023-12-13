@@ -40,3 +40,5 @@ prisma/migrations
 **/.terraform/
 **/**.pem
 **/*.tfstate*
+
+pgdata
