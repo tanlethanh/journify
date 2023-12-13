@@ -1,6 +1,5 @@
-# Journify
-
-A trusted, memorable, and enjoyable travel experience mobile application
+<h1 align="center">Journify</h1>
+<p align="center">A trusted, memorable, and enjoyable travel experience mobile application</p>
 
 ## Setup
 
