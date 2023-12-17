@@ -58,6 +58,10 @@ $ yarn run test:e2e
 $ yarn run test:cov
 ```
 
+## Commands
+
+Install docker [install docker guide on ec2](https://gist.github.com/npearce/6f3c7826c7499587f00957fee62f8ee9)
+
 ## Support
 
 Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).

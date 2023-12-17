@@ -4,5 +4,4 @@ node_modules
 npm-debug.log
 dist
 infra
-prisma/migrations
 pgdata

@@ -21,10 +21,10 @@ WORKDIR /app
 
 COPY package*.json ./
 
-RUN yarn install
+RUN yarn install --frozen-lockfile
 
 COPY . .
-RUN yarn prisma generate
+RUN npx prisma generate
 RUN yarn build
 
 # ---
@@ -39,6 +39,7 @@ WORKDIR /app
 COPY --from=builder --chown=node:node /app/package*.json ./
 COPY --from=builder --chown=node:node /app/node_modules/ ./node_modules/
 COPY --from=builder --chown=node:node /app/dist/ ./dist/
+COPY --from=builder --chown=node:node /app/prisma ./prisma
 
-CMD ["yarn", "prisma", "migrate", "dev", "--name", "init"]
+CMD ["npx", "prisma", "migrate", "deploy"]
 CMD ["node", "dist/main.js"]
