@@ -1,6 +1,6 @@
-import { Body, Controller, Get, Param, Post, Put } from '@nestjs/common';
+import { Controller, Get, Param, Put } from '@nestjs/common';
 import { ApiParam } from '@nestjs/swagger';
-import type { Post as PostModel, User as UserModel } from '@prisma/client';
+import type { Post as PostModel } from '@prisma/client';
 
 import { PostsService } from './posts/posts.service';
 import { UsersService } from './users/users.service';
@@ -14,7 +14,7 @@ export class AppController {
 
 	@Get()
 	getHello(): string {
-		return 'Zenonian team :<<<';
+		return "Hello, we're Zenonian Labs";
 	}
 
 	@Get('feed')
