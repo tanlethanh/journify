@@ -1,12 +1,5 @@
-import {
-	Body,
-	Controller,
-	Delete,
-	Get,
-	Param,
-	Post,
-	Put,
-} from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Put } from '@nestjs/common';
+import { ApiParam } from '@nestjs/swagger';
 import type { Post as PostModel, User as UserModel } from '@prisma/client';
 
 import { PostsService } from './posts/posts.service';
@@ -21,12 +14,7 @@ export class AppController {
 
 	@Get()
 	getHello(): string {
-		return 'hello world';
-	}
-
-	@Get('post/:id')
-	async getPostById(@Param('id') id: string): Promise<PostModel> {
-		return this.postService.post({ id: Number(id) });
+		return 'Zenonian team :<<<';
 	}
 
 	@Get('feed')
@@ -37,6 +25,13 @@ export class AppController {
 	}
 
 	@Get('filtered-posts/:searchString')
+	@ApiParam({
+		name: 'searchString',
+		type: String,
+		description:
+			'Search string that might appear in the titles and contents of some Post',
+		example: 'HCMUT',
+	})
 	async getFilteredPosts(
 		@Param('searchString') searchString: string,
 	): Promise<PostModel[]> {
@@ -54,44 +49,16 @@ export class AppController {
 		});
 	}
 
-	@Post('post')
-	async createDraft(
-		@Body()
-		postData: {
-			title: string;
-			content?: string;
-			checkIn?: string;
-			authorEmail: string;
-		},
-	): Promise<PostModel> {
-		const { title, content, checkIn, authorEmail } = postData;
-		return this.postService.createPost({
-			title,
-			content,
-			checkIn,
-			author: {
-				connect: { email: authorEmail },
-			},
-		});
-	}
-
-	@Post('user')
-	async signupUser(
-		@Body() userData: { name?: string; email: string },
-	): Promise<UserModel> {
-		return this.userService.createUser(userData);
-	}
-
 	@Put('publish/:id')
+	@ApiParam({
+		name: 'id',
+		type: String,
+		description: 'ID of post want to update',
+	})
 	async publishPost(@Param('id') id: string): Promise<PostModel> {
 		return this.postService.updatePost({
 			where: { id: Number(id) },
 			data: { published: true },
 		});
-	}
-
-	@Delete('post/:id')
-	async deletePost(@Param('id') id: string): Promise<PostModel> {
-		return this.postService.deletePost({ id: Number(id) });
 	}
 }
