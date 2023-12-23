@@ -66,3 +66,6 @@ yarn-error.log
 /coverage
 
 .env
+
+**/GoogleService-Info.plist
+**/google-services.json

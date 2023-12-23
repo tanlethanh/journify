@@ -3,6 +3,7 @@
 #import <React/RCTBundleURLProvider.h>
 #import <GoogleMaps/GoogleMaps.h>
 #import "RNCConfig.h"
+#import <Firebase.h>
 
 @implementation AppDelegate
 
@@ -14,6 +15,8 @@
   self.initialProps = @{};
 
   NSString *googleMapsAPIKey = [RNCConfig envFor:@"GOOGLE_MAPS_API_KEY"];
+
+  [FIRApp configure];
 
   // Enable Google Maps on iOS
   [GMSServices provideAPIKey:googleMapsAPIKey];
