@@ -1977,6 +1977,8 @@ __metadata:
     "@babel/preset-env": "npm:^7.20.0"
     "@babel/runtime": "npm:^7.20.0"
     "@react-native-firebase/app": "npm:^18.7.3"
+    "@react-native-firebase/auth": "npm:^18.7.3"
+    "@react-native-google-signin/google-signin": "npm:^11.0.0"
     "@react-native/metro-config": "npm:^0.72.11"
     "@react-navigation/native": "npm:^6.1.9"
     "@react-navigation/native-stack": "npm:^6.9.17"
@@ -2294,6 +2296,35 @@ __metadata:
     expo:
       optional: true
   checksum: 86adcbbfe18aaf6a89237b02e80b60c5c21b2467474c009aa10607838a8476af7885686520493567dcae34614b6eee468ea4f642f9c31a2bea78d2fe2b109327
+  languageName: node
+  linkType: hard
+
+"@react-native-firebase/auth@npm:^18.7.3":
+  version: 18.7.3
+  resolution: "@react-native-firebase/auth@npm:18.7.3"
+  dependencies:
+    plist: "npm:^3.1.0"
+  peerDependencies:
+    "@react-native-firebase/app": 18.7.3
+    expo: ">=47.0.0"
+  peerDependenciesMeta:
+    expo:
+      optional: true
+  checksum: 03c6a3e127d800a7b75b79f94cd5c08122f210c2a8b04adea9a9b58625055b6b0159b5533b634675c51c59af2d6e25c4d0fa93b8e987c6bb2bd9fee86550170a
+  languageName: node
+  linkType: hard
+
+"@react-native-google-signin/google-signin@npm:^11.0.0":
+  version: 11.0.0
+  resolution: "@react-native-google-signin/google-signin@npm:11.0.0"
+  peerDependencies:
+    expo: ">=47.0.0"
+    react: "*"
+    react-native: "*"
+  peerDependenciesMeta:
+    expo:
+      optional: true
+  checksum: 69407ac71369246acdc59d3a299f2fbdfcd7df7cc241c8ad5acce7d377c3a453ddff00fd995436ea9c7fc2acebda69d7c200bc19f5d0f381b4f096ba399826d0
   languageName: node
   linkType: hard
 
@@ -2714,6 +2745,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@xmldom/xmldom@npm:^0.8.8":
+  version: 0.8.10
+  resolution: "@xmldom/xmldom@npm:0.8.10"
+  checksum: c7647c442502720182b0d65b17d45d2d95317c1c8c497626fe524bda79b4fb768a9aa4fae2da919f308e7abcff7d67c058b102a9d641097e9a57f0b80187851f
+  languageName: node
+  linkType: hard
+
 "@yarnpkg/lockfile@npm:^1.1.0":
   version: 1.1.0
   resolution: "@yarnpkg/lockfile@npm:1.1.0"
@@ -3126,7 +3164,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"base64-js@npm:^1.1.2, base64-js@npm:^1.3.1":
+"base64-js@npm:^1.1.2, base64-js@npm:^1.3.1, base64-js@npm:^1.5.1":
   version: 1.5.1
   resolution: "base64-js@npm:1.5.1"
   checksum: f23823513b63173a001030fae4f2dabe283b99a9d324ade3ad3d148e218134676f1ee8568c877cd79ec1c53158dcf2d2ba527a97c606618928ba99dd930102bf
@@ -6778,6 +6816,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"plist@npm:^3.1.0":
+  version: 3.1.0
+  resolution: "plist@npm:3.1.0"
+  dependencies:
+    "@xmldom/xmldom": "npm:^0.8.8"
+    base64-js: "npm:^1.5.1"
+    xmlbuilder: "npm:^15.1.1"
+  checksum: db19ba50faafc4103df8e79bcd6b08004a56db2a9dd30b3e5c8b0ef30398ef44344a674e594d012c8fc39e539a2b72cb58c60a76b4b4401cbbc7c8f6b028d93d
+  languageName: node
+  linkType: hard
+
 "postinstall-postinstall@npm:^2.1.0":
   version: 2.1.0
   resolution: "postinstall-postinstall@npm:2.1.0"
@@ -8407,6 +8456,13 @@ __metadata:
     utf-8-validate:
       optional: true
   checksum: aec4ef4eb65821a7dde7b44790f8699cfafb7978c9b080f6d7a98a7f8fc0ce674c027073a78574c94786ba7112cc90fa2cc94fc224ceba4d4b1030cff9662494
+  languageName: node
+  linkType: hard
+
+"xmlbuilder@npm:^15.1.1":
+  version: 15.1.1
+  resolution: "xmlbuilder@npm:15.1.1"
+  checksum: 665266a8916498ff8d82b3d46d3993913477a254b98149ff7cff060d9b7cc0db7cf5a3dae99aed92355254a808c0e2e3ec74ad1b04aa1061bdb8dfbea26c18b8
   languageName: node
   linkType: hard
 
