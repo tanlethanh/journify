@@ -1989,6 +1989,8 @@ __metadata:
     metro-react-native-babel-preset: "npm:0.76.8"
     react: "npm:18.2.0"
     react-native: "npm:0.72.6"
+    react-native-config: "npm:^1.5.1"
+    react-native-maps: "npm:^1.8.4"
     react-native-reanimated: "npm:^3.6.0"
     react-native-safe-area-context: "npm:^4.7.4"
     react-native-screens: "npm:^3.27.0"
@@ -2524,6 +2526,13 @@ __metadata:
   dependencies:
     "@babel/types": "npm:^7.20.7"
   checksum: e76cb4974c7740fd61311152dc497e7b05c1c46ba554aab875544ab0a7457f343cafcad34ba8fb2ff543ab0e012ef2d3fa0c13f1a4e9a4cd9c4c703c7a2a8d62
+  languageName: node
+  linkType: hard
+
+"@types/geojson@npm:^7946.0.10":
+  version: 7946.0.13
+  resolution: "@types/geojson@npm:7946.0.13"
+  checksum: 4450d070f2591500bd3ce13a898d8e4b53a6b75dfb08c002c2553a1bb135cdde9980dee6193d9fe2179c7b5fb6c52470acd116a3db91b33d8c6ba9ae3ae44e11
   languageName: node
   linkType: hard
 
@@ -6583,6 +6592,34 @@ __metadata:
   version: 17.0.2
   resolution: "react-is@npm:17.0.2"
   checksum: 2bdb6b93fbb1820b024b496042cce405c57e2f85e777c9aabd55f9b26d145408f9f74f5934676ffdc46f3dcff656d78413a6e43968e7b3f92eea35b3052e9053
+  languageName: node
+  linkType: hard
+
+"react-native-config@npm:^1.5.1":
+  version: 1.5.1
+  resolution: "react-native-config@npm:1.5.1"
+  peerDependencies:
+    react-native-windows: ">=0.61"
+  peerDependenciesMeta:
+    react-native-windows:
+      optional: true
+  checksum: bde915ccc2c43df5e5a3f1df1c68495b598dc788cd0227d3b7a847b37fd6bbcf094a5cf9932816f7599132fa9e201c1d4db134f99e72565d20c30f69777d07ed
+  languageName: node
+  linkType: hard
+
+"react-native-maps@npm:^1.8.4":
+  version: 1.8.4
+  resolution: "react-native-maps@npm:1.8.4"
+  dependencies:
+    "@types/geojson": "npm:^7946.0.10"
+  peerDependencies:
+    react: ">= 17.0.1"
+    react-native: ">= 0.64.3"
+    react-native-web: ">= 0.11"
+  peerDependenciesMeta:
+    react-native-web:
+      optional: true
+  checksum: db1ae141da2c4295a40417262b9bd32fc9feeb4d5d449642cd8d28e23fd173cb6f0306179e4345e259b1d55e2b5def6ac8af79f7cdd972e3b175ef15c2a879e8
   languageName: node
   linkType: hard
 
