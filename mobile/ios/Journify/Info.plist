@@ -57,5 +57,7 @@
 		<string>OldStandardTT-Italic.ttf</string>
 		<string>OldStandardTT-Regular.ttf</string>
 	</array>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>We use location to enable check-in feature for users</string>
 </dict>
 </plist>

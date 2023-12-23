@@ -14,7 +14,7 @@ type RootStackParamList = {
 	FirstOnBoarding: undefined;
 	SecondOnBoarding: undefined;
 	ThirdOnBoarding: undefined;
-	// Example: undefined;
+	Example: undefined;
 	Map: undefined;
 };
 
@@ -23,12 +23,12 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 const Router = () => {
 	return (
 		<Stack.Navigator screenOptions={{ headerShown: false }}>
+			<Stack.Screen name="Map" component={Map} />
 			<Stack.Screen name="Splash" component={Splash} />
 			<Stack.Screen name="FirstOnBoarding" component={FirstOnBoarding} />
 			<Stack.Screen name="SecondOnBoarding" component={SecondOnBoarding} />
 			<Stack.Screen name="ThirdOnBoarding" component={ThirdOnBoarding} />
-			{/* <Stack.Screen name="Example" component={Example} /> */}
-			<Stack.Screen name="Map" component={Map} />
+			<Stack.Screen name="Example" component={Example} />
 		</Stack.Navigator>
 	);
 };
