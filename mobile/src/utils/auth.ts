@@ -9,12 +9,16 @@ GoogleSignin.configure({
 });
 
 export const signInWithGoogle = async () => {
-	await GoogleSignin.hasPlayServices({ showPlayServicesUpdateDialog: true });
-	const { idToken } = await GoogleSignin.signIn();
+	try {
+		await GoogleSignin.hasPlayServices();
+		const { idToken } = await GoogleSignin.signIn();
 
-	const googleCredential = auth.GoogleAuthProvider.credential(idToken);
+		const googleCredential = auth.GoogleAuthProvider.credential(idToken);
 
-	return auth().signInWithCredential(googleCredential);
+		return auth().signInWithCredential(googleCredential);
+	} catch (e) {
+		console.log('sign in error', e);
+	}
 };
 
 export const useAuth = () => {
