@@ -1,6 +1,7 @@
 .vscode
 .history
-.yarn
+**/.yarn/*
+!**/.yarn/patches
 
 node_modules
 

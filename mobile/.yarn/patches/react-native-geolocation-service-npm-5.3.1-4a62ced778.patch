@@ -1,0 +1,14 @@
+diff --git a/android/build.gradle b/android/build.gradle
+index cf167cf0bfff194d657ab114ee54363288f10235..522dd2857085f6907f95205a36cbfd77f5a78ff2 100644
+--- a/android/build.gradle
++++ b/android/build.gradle
+@@ -4,7 +4,8 @@ def DEFAULT_COMPILE_SDK_VERSION          = 29
+ def DEFAULT_BUILD_TOOLS_VERSION          = "29.0.2"
+ def DEFAULT_MIN_SDK_VERSION              = 16
+ def DEFAULT_TARGET_SDK_VERSION           = 29
+-def DEFAULT_GOOGLE_PLAY_SERVICES_VERSION = "18.0.0"
++// def DEFAULT_GOOGLE_PLAY_SERVICES_VERSION = "18.0.0"
++def DEFAULT_GOOGLE_PLAY_SERVICES_VERSION = "21.0.1"
+ 
+ def safeExtGet(prop, fallback) {
+   rootProject.ext.has(prop) ? rootProject.ext.get(prop) : fallback
