@@ -64,7 +64,7 @@ const SignIn = () => {
 			</View>
 
 			<View style={styles.helpContainer}>
-				<Text>{"Can't sign in?"}</Text>
+				<Text style={styles.bottomText}>{"Can't sign in?"}</Text>
 				<TouchableOpacity onPress={handlePressContact}>
 					<Text style={styles.contactText}>Contact us</Text>
 				</TouchableOpacity>
@@ -129,6 +129,9 @@ const styles = StyleSheet.create({
 		flexDirection: 'row',
 		gap: 4,
 		justifyContent: 'center',
+	},
+	bottomText: {
+		color: '#848484',
 	},
 	contactText: {
 		color: '#1F41F4',
