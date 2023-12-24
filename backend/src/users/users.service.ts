@@ -32,9 +32,7 @@ export class UsersService {
 	}
 
 	async createUser(data: Prisma.UserCreateInput): Promise<User> {
-		return this.prisma.user.create({
-			data,
-		});
+		return this.prisma.user.create({ data });
 	}
 
 	async updateUser(params: {
@@ -42,15 +40,10 @@ export class UsersService {
 		data: Prisma.UserUpdateInput;
 	}): Promise<User> {
 		const { where, data } = params;
-		return this.prisma.user.update({
-			data,
-			where,
-		});
+		return this.prisma.user.update({ data, where });
 	}
 
 	async deleteUser(where: Prisma.UserWhereUniqueInput): Promise<User> {
-		return this.prisma.user.delete({
-			where,
-		});
+		return this.prisma.user.delete({ where });
 	}
 }
