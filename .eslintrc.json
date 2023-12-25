@@ -1,3 +1,6 @@
 {
-  "extends": ["@walless/eslint-config"]
+  "extends": ["@walless/eslint-config"],
+  "env": {
+    "node": true
+  }
 }
