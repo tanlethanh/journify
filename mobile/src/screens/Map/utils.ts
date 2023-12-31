@@ -86,7 +86,7 @@ const getCurrentLocation = (): Promise<Geo.GeoPosition> => {
 	});
 };
 
-export const getColorByCheckInCount = (place: PlaceData) => {
+export const inspectCheckInCount = (place: PlaceData) => {
 	const color = interpolateColor(
 		place.checkInCount,
 		[0, 500, 1000, 10000],

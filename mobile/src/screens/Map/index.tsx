@@ -2,8 +2,8 @@ import { StyleSheet, View } from 'react-native';
 import MapView from 'react-native-maps';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import { Discovery, Place, Search, User } from './components';
-import { getColorByCheckInCount, useLocation, usePlaces } from './utils';
+import { CheckIn, Discovery, Place, Search, User } from './components';
+import { inspectCheckInCount, useLocation, usePlaces } from './utils';
 
 import { useAuth } from '@/utils/auth';
 
@@ -22,7 +22,7 @@ export const Map = () => {
 				region={region}
 			>
 				{places.map((p) => {
-					const { color, value } = getColorByCheckInCount(p);
+					const { color, value } = inspectCheckInCount(p);
 					return (
 						<Place
 							key={p.id}
@@ -39,8 +39,8 @@ export const Map = () => {
 			<View style={searchBarStyle}>
 				<Search />
 			</View>
-			<View style={styles.bottomView}></View>
 			<Discovery style={styles.bottomView} />
+			<CheckIn place={places[0]} style={styles.bottomView} />
 		</View>
 	);
 };
