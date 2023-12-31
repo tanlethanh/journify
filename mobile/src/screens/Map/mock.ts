@@ -68,6 +68,7 @@ export const checkIns: CheckInData[] = [
 	{
 		id: '1',
 		placeId: '1',
+		date: '13 Nov',
 		caption:
 			'Nestled in tranquility, this chill haven whispers serenity. Soft breezes dance with gentle sunshine, creating a symphony of calm. Time slows, and worries melt away in the embrace of peaceful simplicity.',
 		imageUrl:
@@ -81,7 +82,7 @@ export const checkIns: CheckInData[] = [
 			handle: '@tanle',
 			discovery: 112,
 			image:
-				'https://image.winudf.com/v2/image/Y29tLmFuZHJvbW8uZGV2NzE5NTcyLmFwcDc4MTAxNl9zY3JlZW5fNl8xNTM3MDY5MjkzXzAyMA/screen-6.webp?fakeurl=1&type=.webp',
+				'https://ih1.redbubble.net/image.3294707811.8499/raf,750x1000,075,t,000000:44f0b734a5.jpg',
 			tick: true,
 		},
 		reply: [

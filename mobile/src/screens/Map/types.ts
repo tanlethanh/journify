@@ -29,6 +29,7 @@ export type Reply = {
 export type CheckInData = {
 	id: string;
 	placeId: string;
+	date: string;
 	user: UserInfo;
 	upvote: number;
 	downvote: number;
