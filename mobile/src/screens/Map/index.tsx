@@ -2,10 +2,13 @@ import { StyleSheet, View } from 'react-native';
 import MapView from 'react-native-maps';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import { Place, Search } from './components';
+import { Place, Search, User } from './components';
 import { getColorByCheckInCount, useLocation, usePlaces } from './utils';
 
+import { useAuth } from '@/utils/auth';
+
 export const Map = () => {
+	const { user } = useAuth();
 	const { region } = useLocation();
 	const { places } = usePlaces();
 	const { top } = useSafeAreaInsets();
@@ -17,7 +20,6 @@ export const Map = () => {
 				style={styles.mapContainer}
 				initialRegion={region}
 				region={region}
-				showsUserLocation={true}
 			>
 				{places.map((p) => {
 					const { color, value } = getColorByCheckInCount(p);
@@ -32,6 +34,7 @@ export const Map = () => {
 						/>
 					);
 				})}
+				<User location={region} imageUrl={user?.photoURL as string} />
 			</MapView>
 			<View style={searchBarStyle}>
 				<Search />

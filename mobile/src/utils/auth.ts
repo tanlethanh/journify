@@ -21,9 +21,13 @@ export const signInWithGoogle = async () => {
 	}
 };
 
+type WrappedUser = User & {
+	photoURL: string;
+};
+
 export const useAuth = () => {
 	const [initializing, setInitializing] = useState(true);
-	const [user, setUser] = useState<User>();
+	const [user, setUser] = useState<WrappedUser>();
 
 	useEffect(() => {
 		const subscriber = auth().onAuthStateChanged((user) => {
