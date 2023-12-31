@@ -11,7 +11,7 @@
       "@/store/*": ["./src/store/*"],
       "@/types/*": ["./src/types/*"],
       "@/utils/*": ["./src/utils/*"],
-      "@assets/*": ["./assets/*"]
+      "@/assets/*": ["./assets/*"]
     }
   }
 }
