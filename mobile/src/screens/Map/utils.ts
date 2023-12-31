@@ -3,6 +3,11 @@ import { PermissionsAndroid, Platform } from 'react-native';
 import Geo from 'react-native-geolocation-service';
 import type { Region } from 'react-native-maps';
 
+export type Location = {
+	latitude: number;
+	longitude: number;
+};
+
 // Ho Chi Minh city
 const defaultLocation: Region = {
 	latitude: 10.762622,
@@ -23,7 +28,6 @@ export const useLocation = () => {
 
 		try {
 			const loc = await getCurrentLocation();
-			console.log(loc, '<-- location');
 			setRegion({
 				latitude: loc.coords.latitude as number,
 				latitudeDelta: defaultLocation.latitudeDelta,
