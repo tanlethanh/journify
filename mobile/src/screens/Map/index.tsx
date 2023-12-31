@@ -2,7 +2,7 @@ import { StyleSheet, View } from 'react-native';
 import MapView from 'react-native-maps';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import { Place, Search, User } from './components';
+import { Discovery, Place, Search, User } from './components';
 import { getColorByCheckInCount, useLocation, usePlaces } from './utils';
 
 import { useAuth } from '@/utils/auth';
@@ -39,6 +39,8 @@ export const Map = () => {
 			<View style={searchBarStyle}>
 				<Search />
 			</View>
+			<View style={styles.bottomView}></View>
+			<Discovery style={styles.bottomView} />
 		</View>
 	);
 };
@@ -57,5 +59,21 @@ const styles = StyleSheet.create({
 	},
 	mapContainer: {
 		flex: 1,
+	},
+	bottomView: {
+		position: 'absolute',
+		bottom: 0,
+		left: 0,
+		right: 0,
+		backgroundColor: '#FFFFFF',
+		paddingHorizontal: 14,
+		paddingTop: 16,
+		borderTopLeftRadius: 10,
+		borderTopRightRadius: 10,
+		shadowOffset: {
+			height: -1,
+			width: 0,
+		},
+		shadowOpacity: 0.2,
 	},
 });
