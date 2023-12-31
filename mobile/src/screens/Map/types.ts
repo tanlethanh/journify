@@ -23,6 +23,7 @@ export type UserInfo = {
 export type Reply = {
 	checkInId: string;
 	content: string;
+	date: string;
 	user: UserInfo;
 };
 

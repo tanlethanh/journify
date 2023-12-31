@@ -94,9 +94,10 @@ export const checkIns: CheckInData[] = [
 					discovery: 32,
 					image:
 						'https://lofigirl.com/wp-content/uploads/2023/02/DAY_UPDATE_ILLU.jpg',
-					tick: true,
+					tick: false,
 				},
 				content: "I'm with you, @tanle!",
+				date: '15 Nov',
 			},
 			{
 				checkInId: '1',
@@ -110,6 +111,7 @@ export const checkIns: CheckInData[] = [
 				},
 				content:
 					"Can't wait! Let's catch those peaceful vibes together soon. 🌿✨",
+				date: '16 Nov',
 			},
 		],
 	},
