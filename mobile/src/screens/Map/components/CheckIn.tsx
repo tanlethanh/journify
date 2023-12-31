@@ -7,20 +7,31 @@ import { inspectCheckInCount } from '../utils';
 
 type Props = ViewProps & {
 	place: PlaceData;
+	onPressPlace?: (place: PlaceData) => void;
+	onPressCheckIn?: () => void;
 };
 
-export const CheckIn: FC<Props> = ({ style, place, ...props }) => {
+export const CheckIn: FC<Props> = ({
+	style,
+	place,
+	onPressPlace,
+	onPressCheckIn,
+	...props
+}) => {
 	const { value } = inspectCheckInCount(place);
+	const handlePressPlace = () => onPressPlace?.(place);
 
 	return (
 		<View style={[styles.container, style]} {...props}>
-			<Image style={styles.banner} source={{ uri: place.imageUrl }} />
-			<View style={styles.textContainer}>
+			<TouchableOpacity onPress={handlePressPlace}>
+				<Image style={styles.banner} source={{ uri: place.imageUrl }} />
+			</TouchableOpacity>
+			<TouchableOpacity style={styles.textContainer} onPress={handlePressPlace}>
 				<Text style={styles.nameText}>{place.name}</Text>
 				<Text>{`· ${place.handle}`}</Text>
 				<Text>{`· ${value} check-in`}</Text>
-			</View>
-			<TouchableOpacity style={styles.button}>
+			</TouchableOpacity>
+			<TouchableOpacity style={styles.button} onPress={onPressCheckIn}>
 				<Text style={styles.buttonText}>Check-in</Text>
 			</TouchableOpacity>
 		</View>

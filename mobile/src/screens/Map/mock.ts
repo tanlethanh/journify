@@ -1,4 +1,4 @@
-import type { Location, PlaceData } from './types';
+import type { CheckInData, Location, PlaceData } from './types';
 
 export const getMockedPlaces = (loc: Location): PlaceData[] => {
 	return [
@@ -63,3 +63,53 @@ export const getMockedPlaces = (loc: Location): PlaceData[] => {
 		},
 	];
 };
+
+export const checkIns: CheckInData[] = [
+	{
+		id: '1',
+		placeId: '1',
+		caption:
+			'Nestled in tranquility, this chill haven whispers serenity. Soft breezes dance with gentle sunshine, creating a symphony of calm. Time slows, and worries melt away in the embrace of peaceful simplicity.',
+		imageUrl:
+			'https://c0.wallpaperflare.com/preview/259/493/306/person-car-cloud-sunset.jpg',
+		upvote: 375,
+		downvote: 0,
+		impressions: 1795,
+		replyCount: 4,
+		user: {
+			name: 'Tan Le',
+			handle: '@tanle',
+			discovery: 112,
+			image:
+				'https://image.winudf.com/v2/image/Y29tLmFuZHJvbW8uZGV2NzE5NTcyLmFwcDc4MTAxNl9zY3JlZW5fNl8xNTM3MDY5MjkzXzAyMA/screen-6.webp?fakeurl=1&type=.webp',
+			tick: true,
+		},
+		reply: [
+			{
+				checkInId: '1',
+				user: {
+					name: 'Yen Nhi',
+					handle: '@nhiiii',
+					discovery: 32,
+					image:
+						'https://lofigirl.com/wp-content/uploads/2023/02/DAY_UPDATE_ILLU.jpg',
+					tick: true,
+				},
+				content: "I'm with you, @tanle!",
+			},
+			{
+				checkInId: '1',
+				user: {
+					name: 'Tommi',
+					handle: '@__tommi__',
+					discovery: 32,
+					image:
+						'https://nftcrypto.io/wp-content/uploads/2023/05/2023-05-18-17_57_18-The-Journey-of-an-NFT-Avatar-Word-Product-Activation-Failed.png',
+					tick: true,
+				},
+				content:
+					"Can't wait! Let's catch those peaceful vibes together soon. 🌿✨",
+			},
+		],
+	},
+];

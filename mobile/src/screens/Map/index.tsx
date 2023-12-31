@@ -3,7 +3,14 @@ import MapView from 'react-native-maps';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { CheckIn, Discovery, Place, Search, User } from './components';
-import { inspectCheckInCount, useLocation, usePlaces } from './utils';
+import { showDetailPlaceModal } from './modal';
+import type { PlaceData } from './types';
+import {
+	getCheckIns,
+	inspectCheckInCount,
+	useLocation,
+	usePlaces,
+} from './utils';
 
 import { useAuth } from '@/utils/auth';
 
@@ -12,7 +19,13 @@ export const Map = () => {
 	const { region } = useLocation();
 	const { places } = usePlaces();
 	const { top } = useSafeAreaInsets();
+	const currentPlace = places[0];
 	const searchBarStyle = { ...styles.searchBar, top };
+
+	const handlePressPlace = (place: PlaceData) => {
+		const checkIns = getCheckIns(place);
+		showDetailPlaceModal(place, checkIns);
+	};
 
 	return (
 		<View style={styles.container}>
@@ -39,8 +52,15 @@ export const Map = () => {
 			<View style={searchBarStyle}>
 				<Search />
 			</View>
-			<Discovery style={styles.bottomView} />
-			<CheckIn place={places[0]} style={styles.bottomView} />
+			{currentPlace ? (
+				<CheckIn
+					style={styles.bottomView}
+					place={currentPlace}
+					onPressPlace={handlePressPlace}
+				/>
+			) : (
+				<Discovery style={styles.bottomView} />
+			)}
 		</View>
 	);
 };

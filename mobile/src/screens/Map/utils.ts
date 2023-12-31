@@ -4,7 +4,7 @@ import Geo from 'react-native-geolocation-service';
 import type { Region } from 'react-native-maps';
 import { interpolateColor } from 'react-native-reanimated';
 
-import { getMockedPlaces } from './mock';
+import { checkIns, getMockedPlaces } from './mock';
 import type { PlaceData } from './types';
 
 // Ho Chi Minh city
@@ -99,4 +99,8 @@ export const inspectCheckInCount = (place: PlaceData) => {
 	}
 
 	return { color, value };
+};
+
+export const getCheckIns = (place: PlaceData) => {
+	return checkIns.filter((e) => e.placeId === place.id);
 };
