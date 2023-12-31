@@ -1,50 +1,13 @@
-import type { PropsWithChildren } from 'react';
 import {
 	ScrollView,
-	StyleSheet,
 	Text,
+	TouchableOpacity,
 	useColorScheme,
 	View,
 } from 'react-native';
-import {
-	Colors,
-	DebugInstructions,
-	Header,
-	LearnMoreLinks,
-	ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+import { Colors, Header } from 'react-native/Libraries/NewAppScreen';
 
-type SectionProps = PropsWithChildren<{
-	title: string;
-}>;
-
-export function Section({ children, title }: SectionProps): JSX.Element {
-	const isDarkMode = useColorScheme() === 'dark';
-	return (
-		<View style={styles.sectionContainer}>
-			<Text
-				style={[
-					styles.sectionTitle,
-					{
-						color: isDarkMode ? Colors.white : Colors.black,
-					},
-				]}
-			>
-				{title}
-			</Text>
-			<Text
-				style={[
-					styles.sectionDescription,
-					{
-						color: isDarkMode ? Colors.light : Colors.dark,
-					},
-				]}
-			>
-				{children}
-			</Text>
-		</View>
-	);
-}
+import { showModal } from '@/utils/modal';
 
 export function Example(): JSX.Element {
 	const isDarkMode = useColorScheme() === 'dark';
@@ -60,48 +23,36 @@ export function Example(): JSX.Element {
 				style={backgroundStyle}
 			>
 				<Header />
-				<View
+				<TouchableOpacity
 					style={{
-						backgroundColor: isDarkMode ? Colors.black : Colors.white,
+						backgroundColor: 'green',
+						padding: 20,
+					}}
+					onPress={() => {
+						showModal({
+							id: 'example',
+							activeOffsetX: 0,
+							detached: true,
+							topInset: 100,
+							bottomInset: 100,
+							style: {
+								marginHorizontal: 100,
+							},
+							Component: () => {
+								return (
+									<View style={{ backgroundColor: 'blue', height: 100 }}>
+										<Text>Modal</Text>
+									</View>
+								);
+							},
+						});
 					}}
 				>
-					<Section title="Step One">
-						Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-						screen and then come back to see your edits.
-					</Section>
-					<Section title="See Your Changes">
-						<ReloadInstructions />
-					</Section>
-					<Section title="Debug">
-						<DebugInstructions />
-					</Section>
-					<Section title="Learn More">
-						Read the docs to discover what to do next:
-					</Section>
-					<LearnMoreLinks />
-				</View>
+					<Text>Open modal</Text>
+				</TouchableOpacity>
 			</ScrollView>
 		</View>
 	);
 }
-
-const styles = StyleSheet.create({
-	sectionContainer: {
-		marginTop: 32,
-		paddingHorizontal: 24,
-	},
-	sectionTitle: {
-		fontSize: 24,
-		fontWeight: '600',
-	},
-	sectionDescription: {
-		marginTop: 8,
-		fontSize: 18,
-		fontWeight: '400',
-	},
-	highlight: {
-		fontWeight: '700',
-	},
-});
 
 export default Example;
