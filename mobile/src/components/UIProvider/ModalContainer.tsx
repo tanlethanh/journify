@@ -34,7 +34,7 @@ const ModalContainer = (config: ModalConfig) => {
 		<BottomSheetModal
 			index={index || 0}
 			ref={bottomSheetModalRef}
-			snapPoints={snapPoints || ['60%', '80%']}
+			snapPoints={snapPoints || ['100%']}
 			onDismiss={handleDismiss}
 			handleIndicatorStyle={styles.handleIndicator}
 			backdropComponent={useBackdrop ? CustomBackdrop : null}
