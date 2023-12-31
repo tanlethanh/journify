@@ -3,7 +3,7 @@ import MapView from 'react-native-maps';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Place, Search } from './components';
-import { useLocation, usePlaces } from './utils';
+import { getColorByCheckInCount, useLocation, usePlaces } from './utils';
 
 export const Map = () => {
 	const { region } = useLocation();
@@ -20,12 +20,15 @@ export const Map = () => {
 				showsUserLocation={true}
 			>
 				{places.map((p) => {
+					const { color, value } = getColorByCheckInCount(p);
 					return (
 						<Place
 							key={p.id}
 							title={p.name}
 							location={p.location}
 							image={{ uri: p.imageUrl }}
+							tagText={value}
+							tagColor={color}
 						/>
 					);
 				})}

@@ -5,7 +5,7 @@ export const getMockedPlaces = (loc: Location): PlaceData[] => {
 		{
 			id: '1',
 			name: 'Chiller',
-			checkInCount: 10000,
+			checkInCount: 12400,
 			location: {
 				latitude: loc.latitude + 0.0072,
 				longitude: loc.longitude + 0.0066,
@@ -16,7 +16,7 @@ export const getMockedPlaces = (loc: Location): PlaceData[] => {
 		{
 			id: '2',
 			name: 'Holicamp',
-			checkInCount: 10000,
+			checkInCount: 234,
 			location: {
 				latitude: loc.latitude + 0.0066,
 				longitude: loc.longitude - 0.007,
@@ -27,7 +27,7 @@ export const getMockedPlaces = (loc: Location): PlaceData[] => {
 		{
 			id: '3',
 			name: 'Banh Canh Ca Loc',
-			checkInCount: 10000,
+			checkInCount: 1300,
 			location: {
 				latitude: loc.latitude - 0.0064,
 				longitude: loc.longitude + 0.0078,
@@ -37,7 +37,7 @@ export const getMockedPlaces = (loc: Location): PlaceData[] => {
 		{
 			id: '4',
 			name: 'BKBAR',
-			checkInCount: 10000,
+			checkInCount: 578,
 			location: {
 				latitude: loc.latitude - 0.009,
 				longitude: loc.longitude - 0.001,
@@ -48,7 +48,7 @@ export const getMockedPlaces = (loc: Location): PlaceData[] => {
 		{
 			id: '5',
 			name: 'Hi Coffee',
-			checkInCount: 10000,
+			checkInCount: 9720,
 			location: {
 				latitude: loc.latitude - 0.003,
 				longitude: loc.longitude - 0.008,

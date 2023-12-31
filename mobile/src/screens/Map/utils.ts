@@ -2,8 +2,10 @@ import { useEffect, useState } from 'react';
 import { PermissionsAndroid, Platform } from 'react-native';
 import Geo from 'react-native-geolocation-service';
 import type { Region } from 'react-native-maps';
+import { interpolateColor } from 'react-native-reanimated';
 
 import { getMockedPlaces } from './mock';
+import type { PlaceData } from './types';
 
 // Ho Chi Minh city
 const defaultLocation: Region = {
@@ -82,4 +84,19 @@ const getCurrentLocation = (): Promise<Geo.GeoPosition> => {
 			(err) => reject(err),
 		);
 	});
+};
+
+export const getColorByCheckInCount = (place: PlaceData) => {
+	const color = interpolateColor(
+		place.checkInCount,
+		[0, 500, 1000, 10000],
+		['#00E0FF', '#24B2A1', '#2487B2', '#24B24C'],
+	);
+
+	let value = place.checkInCount.toString();
+	if (place.checkInCount > 1000) {
+		value = (place.checkInCount / 1000).toFixed(1) + 'k';
+	}
+
+	return { color, value };
 };
