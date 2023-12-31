@@ -11,6 +11,7 @@ const ModalContainer = (config: ModalConfig) => {
 	const {
 		id,
 		index,
+		style,
 		context,
 		Component,
 		onDismiss,
@@ -32,6 +33,7 @@ const ModalContainer = (config: ModalConfig) => {
 
 	return (
 		<BottomSheetModal
+			style={[styles.sheet, style]}
 			index={index || 0}
 			ref={bottomSheetModalRef}
 			snapPoints={snapPoints || ['100%']}
@@ -58,7 +60,9 @@ const styles = StyleSheet.create({
 	handleIndicator: {
 		height: 0,
 	},
-	background: {
+	sheet: {
+		borderRadius: 20,
+		overflow: 'hidden',
 		shadowOffset: {
 			width: 1,
 			height: 1,
@@ -66,5 +70,8 @@ const styles = StyleSheet.create({
 		elevation: 8,
 		shadowOpacity: 0.5,
 		shadowColor: '#000000',
+	},
+	background: {
+		borderRadius: 0,
 	},
 });
