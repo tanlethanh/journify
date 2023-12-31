@@ -1,6 +1,7 @@
 import type { FC } from 'react';
 import type { ColorValue, ImageSourcePropType } from 'react-native';
 import { Image, StyleSheet, Text, View } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Marker } from 'react-native-maps';
 
 import type { Location } from '../types';
@@ -11,6 +12,7 @@ type Props = {
 	location: Location;
 	tagColor?: ColorValue;
 	tagText?: string;
+	onLongPress?: () => void;
 };
 
 export const Place: FC<Props> = ({
@@ -19,27 +21,30 @@ export const Place: FC<Props> = ({
 	location,
 	tagColor,
 	tagText,
+	onLongPress,
 }) => {
 	title = title || 'Unknown';
 
 	return (
 		<Marker coordinate={location}>
-			<View style={styles.imageContainer}>
-				<Image style={styles.image} source={image} />
-			</View>
-			{tagText && (
-				<View
-					style={[
-						styles.tagContainer,
-						tagColor ? { backgroundColor: tagColor } : undefined,
-					]}
-				>
-					<Text style={styles.tag}>{tagText}</Text>
+			<TouchableOpacity onLongPress={onLongPress}>
+				<View style={styles.imageContainer}>
+					<Image style={styles.image} source={image} />
 				</View>
-			)}
-			<View style={styles.titleContainer}>
-				<Text style={styles.title}>{title}</Text>
-			</View>
+				{tagText && (
+					<View
+						style={[
+							styles.tagContainer,
+							tagColor ? { backgroundColor: tagColor } : undefined,
+						]}
+					>
+						<Text style={styles.tag}>{tagText}</Text>
+					</View>
+				)}
+				<View style={styles.titleContainer}>
+					<Text style={styles.title}>{title}</Text>
+				</View>
+			</TouchableOpacity>
 		</Marker>
 	);
 };

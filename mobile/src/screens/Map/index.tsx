@@ -36,6 +36,7 @@ export const Map = () => {
 			>
 				{places.map((p) => {
 					const { color, value } = inspectCheckInCount(p);
+					const handleLongPress = () => handlePressPlace(p);
 					return (
 						<Place
 							key={p.id}
@@ -44,6 +45,7 @@ export const Map = () => {
 							image={{ uri: p.imageUrl }}
 							tagText={value}
 							tagColor={color}
+							onLongPress={handleLongPress}
 						/>
 					);
 				})}

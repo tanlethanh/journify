@@ -1,5 +1,7 @@
 import type { FC } from 'react';
 import { Image, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import { useBottomSheetModal } from '@gorhom/bottom-sheet';
 import { ChevronLeftIcon } from 'lucide-react-native';
 
 import type { CheckInData, PlaceData } from '../types';
@@ -13,14 +15,16 @@ type Props = {
 };
 
 export const PlaceDetail: FC<Props> = ({ place, checkIns }) => {
-	console.log(place, checkIns, styles);
 	const { value } = inspectCheckInCount(place);
+	const { dismiss } = useBottomSheetModal();
 
 	return (
 		<View style={styles.container}>
 			<Image style={styles.banner} source={{ uri: place.imageUrl }} />
 			<View style={styles.topBarContainer}>
-				<ChevronLeftIcon color="#F3F3F3" />
+				<TouchableOpacity onPress={dismiss as never}>
+					<ChevronLeftIcon color="#F3F3F3" />
+				</TouchableOpacity>
 				<View style={styles.titleContainer}>
 					<Text style={[styles.whiteText, styles.nameText]}>{place.name}</Text>
 					<Text style={styles.whiteText}>{`· ${place.handle}`}</Text>
