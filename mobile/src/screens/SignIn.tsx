@@ -25,7 +25,7 @@ const SignIn = () => {
 	};
 
 	useEffect(() => {
-		if (user) navigation.navigate('Map' as never);
+		if (user) navigation.navigate('MainNavigator' as never);
 	}, [user]);
 
 	return (

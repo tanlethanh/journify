@@ -1,4 +1,4 @@
-import { useColorScheme } from 'react-native';
+import { StyleSheet, TouchableOpacity, useColorScheme } from 'react-native';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { BookUser, Home, Map, SignpostBig } from 'lucide-react-native';
@@ -55,9 +55,79 @@ export const MainNavigator = () => {
 				tabBarInactiveTintColor: isDarkMode ? Colors.white : Colors.black,
 			})}
 		>
-			<Tab.Screen name={TabScreens.HOMEPAGE} component={Homepage} />
-			<Tab.Screen name={TabScreens.EXPLORE} component={Explore} />
-			<Tab.Screen name={TabScreens.USER} component={User} />
+			<Tab.Screen
+				name={TabScreens.HOMEPAGE}
+				component={Homepage}
+				options={({ navigation, route }) => ({
+					headerShown: true,
+					title: TabScreens.HOMEPAGE,
+					headerTitleAlign: 'left',
+					headerStyle: styles.headerStyle,
+					headerRight: () => (
+						<TouchableOpacity
+							style={styles.headerRight}
+							onPress={() => navigation.navigate('Map')}
+						>
+							<Map color={isDarkMode ? Colors.white : Colors.black} />
+						</TouchableOpacity>
+					),
+				})}
+			/>
+			<Tab.Screen
+				name={TabScreens.EXPLORE}
+				component={Explore}
+				options={({ navigation, route }) => ({
+					headerShown: true,
+					title: TabScreens.EXPLORE,
+					headerTitleAlign: 'left',
+					headerStyle: styles.headerStyle,
+					headerRight: () => (
+						<TouchableOpacity
+							style={styles.headerRight}
+							onPress={() => navigation.navigate('Map')}
+						>
+							<Map color={isDarkMode ? Colors.white : Colors.black} />
+						</TouchableOpacity>
+					),
+				})}
+			/>
+			<Tab.Screen
+				name={TabScreens.USER}
+				component={User}
+				options={({ navigation, route }) => ({
+					headerShown: true,
+					title: TabScreens.USER,
+					headerTitleAlign: 'left',
+					headerStyle: styles.headerStyle,
+					headerRight: () => (
+						<TouchableOpacity
+							style={styles.headerRight}
+							onPress={() => navigation.navigate('Map')}
+						>
+							<Map color={isDarkMode ? Colors.white : Colors.black} />
+						</TouchableOpacity>
+					),
+				})}
+			/>
 		</Tab.Navigator>
 	);
 };
+
+const styles = StyleSheet.create({
+	headerRight: {
+		justifyContent: 'center',
+		alignItems: 'center',
+		padding: 8,
+	},
+	headerStyle: {
+		backgroundColor: '#FFFFFF',
+		shadowOffset: {
+			width: 0,
+			height: 3,
+		},
+		shadowColor: 'black',
+		shadowOpacity: 1,
+		shadowRadius: 3.84,
+		elevation: 15,
+	},
+});

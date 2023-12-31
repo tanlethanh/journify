@@ -1,20 +1,17 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+
+import Following from './FollowingTab';
+import ForYou from './ForYouTab';
+
+const TopTab = createMaterialTopTabNavigator();
 
 export const Homepage = () => {
 	return (
-		<View style={styles.container}>
-			<Text>HomePage</Text>
-		</View>
+		<TopTab.Navigator>
+			<TopTab.Screen name="For you" component={ForYou} />
+			<TopTab.Screen name="Following" component={Following} />
+		</TopTab.Navigator>
 	);
 };
 
 export default Homepage;
-
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		backgroundColor: '#fff',
-		alignItems: 'center',
-		justifyContent: 'center',
-	},
-});

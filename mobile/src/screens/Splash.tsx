@@ -13,7 +13,7 @@ const Splash = () => {
 	useEffect(() => {
 		if (waiting || initializing) return;
 		if (user) {
-			navigation.navigate('Map' as never);
+			navigation.navigate('MainNavigator' as never);
 		} else {
 			navigation.navigate('SignIn' as never);
 		}
