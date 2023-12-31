@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Image, StyleSheet, Text, View } from 'react-native';
 
 import type { CheckInData } from '../types';
 
@@ -14,9 +14,10 @@ import {
 
 type Props = {
 	checkIn: CheckInData;
+	showImage?: boolean;
 };
 
-export const CheckInDetail: FC<Props> = ({ checkIn }) => {
+export const CheckInDetail: FC<Props> = ({ checkIn, showImage }) => {
 	return (
 		<View style={styles.container}>
 			<InfoBox user={checkIn.user} date={checkIn.date} />
@@ -25,6 +26,10 @@ export const CheckInDetail: FC<Props> = ({ checkIn }) => {
 				<View style={styles.verticalLine} />
 				<View style={styles.mainContentContainer}>
 					<Text style={styles.caption}>{checkIn.caption}</Text>
+
+					{showImage && (
+						<Image style={styles.image} source={{ uri: checkIn.imageUrl }} />
+					)}
 
 					<View style={styles.actionsContainer}>
 						<View style={styles.action}>
@@ -74,6 +79,7 @@ const styles = StyleSheet.create({
 		marginVertical: 8,
 		marginLeft: 18,
 		marginRight: 10,
+		paddingBottom: 20,
 	},
 	verticalLine: {
 		width: 2.4,
@@ -84,11 +90,17 @@ const styles = StyleSheet.create({
 	},
 	mainContentContainer: {
 		flex: 1,
+		marginBottom: 10,
 	},
 	caption: {
 		fontSize: 15,
 		lineHeight: 22,
 		fontWeight: '300',
+	},
+	image: {
+		height: 200,
+		borderRadius: 10,
+		marginTop: 10,
 	},
 	actionsContainer: {
 		flexDirection: 'row',

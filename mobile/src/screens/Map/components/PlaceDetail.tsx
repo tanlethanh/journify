@@ -31,8 +31,8 @@ export const PlaceDetail: FC<Props> = ({ place, checkIns }) => {
 				style={styles.scroll}
 				contentContainerStyle={styles.checkInsContainer}
 			>
-				{checkIns.map((c) => {
-					return <CheckInDetail key={c.id} checkIn={c} />;
+				{checkIns.map((c, i) => {
+					return <CheckInDetail key={c.id} checkIn={c} showImage={i > 0} />;
 				})}
 			</ScrollView>
 		</View>
@@ -81,5 +81,6 @@ const styles = StyleSheet.create({
 	},
 	checkInsContainer: {
 		padding: 10,
+		paddingBottom: 40,
 	},
 });

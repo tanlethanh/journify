@@ -76,7 +76,7 @@ export const checkIns: CheckInData[] = [
 		upvote: 375,
 		downvote: 0,
 		impressions: 1795,
-		replyCount: 4,
+		replyCount: 2,
 		user: {
 			name: 'Tan Le',
 			handle: '@tanle',
@@ -114,5 +114,25 @@ export const checkIns: CheckInData[] = [
 				date: '16 Nov',
 			},
 		],
+	},
+	{
+		id: '2',
+		placeId: '1',
+		date: '20 Dec',
+		caption:
+			"Chillin' like a villain in my own little laughter lair. 😎🤣 #SeriousAboutChillaxing",
+		imageUrl:
+			'https://media.licdn.com/dms/image/D5612AQFjCAi8IuoqbA/article-cover_image-shrink_600_2000/0/1694075367820?e=2147483647&v=beta&t=YuAak2v9NSV7_UAyv2o0-xlH54msee5h1iA_rAmKPwo',
+		upvote: 123,
+		downvote: 0,
+		impressions: 789,
+		replyCount: 0,
+		user: {
+			name: 'Hung Wibu',
+			handle: '@hung_wibu',
+			discovery: 45,
+			image: 'https://i.imgur.com/bMH6qNc.png',
+			tick: true,
+		},
 	},
 ];
