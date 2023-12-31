@@ -7,7 +7,7 @@ interface Props {
 	style?: ViewStyle;
 }
 
-const Search: FC<Props> = ({ style }) => {
+export const Search: FC<Props> = ({ style }) => {
 	return (
 		<View style={[style, styles.container]}>
 			<SearchIcon color="#848484" />
