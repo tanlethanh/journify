@@ -3,10 +3,7 @@ import { PermissionsAndroid, Platform } from 'react-native';
 import Geo from 'react-native-geolocation-service';
 import type { Region } from 'react-native-maps';
 
-export type Location = {
-	latitude: number;
-	longitude: number;
-};
+import { getMockedPlaces } from './mock';
 
 // Ho Chi Minh city
 const defaultLocation: Region = {
@@ -55,6 +52,13 @@ export const useLocation = () => {
 	}, []);
 
 	return { region };
+};
+
+export const usePlaces = () => {
+	const { region } = useLocation();
+	const places = getMockedPlaces(region);
+
+	return { places };
 };
 
 export const grantLocationPermission = async (): Promise<boolean> => {

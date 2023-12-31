@@ -3,16 +3,23 @@ import type { ColorValue, ImageSourcePropType } from 'react-native';
 import { Image, StyleSheet, Text, View } from 'react-native';
 import { Marker } from 'react-native-maps';
 
-import type { Location } from '../utils';
+import type { Location } from '../types';
 
 type Props = {
+	title?: string;
 	image: ImageSourcePropType;
 	location: Location;
 	tagColor?: ColorValue;
-	title?: string;
+	tagText?: string;
 };
 
-export const Place: FC<Props> = ({ image, location, tagColor, title }) => {
+export const Place: FC<Props> = ({
+	title,
+	image,
+	location,
+	tagColor,
+	tagText,
+}) => {
 	title = title || 'Unknown';
 
 	return (
@@ -20,14 +27,16 @@ export const Place: FC<Props> = ({ image, location, tagColor, title }) => {
 			<View style={styles.imageContainer}>
 				<Image style={styles.image} source={image} />
 			</View>
-			<View
-				style={[
-					styles.tagContainer,
-					tagColor ? { backgroundColor: tagColor } : undefined,
-				]}
-			>
-				<Text style={styles.tag}>10k</Text>
-			</View>
+			{tagText && (
+				<View
+					style={[
+						styles.tagContainer,
+						tagColor ? { backgroundColor: tagColor } : undefined,
+					]}
+				>
+					<Text style={styles.tag}>{tagText}</Text>
+				</View>
+			)}
 			<View style={styles.titleContainer}>
 				<Text style={styles.title}>{title}</Text>
 			</View>
@@ -69,13 +78,14 @@ const styles = StyleSheet.create({
 	},
 	titleContainer: {
 		position: 'absolute',
-		bottom: -20,
+		top: 60,
 		left: -14,
-		width: 100,
+		width: 80,
 	},
 	title: {
 		fontSize: 14,
 		fontWeight: '800',
-		color: '#5A5A5A',
+		color: '#383737',
+		textAlign: 'center',
 	},
 });
