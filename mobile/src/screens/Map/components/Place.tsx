@@ -1,7 +1,6 @@
-import type { FC } from 'react';
+import { type FC } from 'react';
 import type { ColorValue, ImageSourcePropType } from 'react-native';
 import { Image, StyleSheet, Text, View } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Marker } from 'react-native-maps';
 
 import type { Location } from '../types';
@@ -12,7 +11,7 @@ type Props = {
 	location: Location;
 	tagColor?: ColorValue;
 	tagText?: string;
-	onLongPress?: () => void;
+	onPress?: () => void;
 };
 
 export const Place: FC<Props> = ({
@@ -21,30 +20,26 @@ export const Place: FC<Props> = ({
 	location,
 	tagColor,
 	tagText,
-	onLongPress,
+	onPress,
 }) => {
-	title = title || 'Unknown';
-
 	return (
-		<Marker coordinate={location}>
-			<TouchableOpacity onLongPress={onLongPress}>
-				<View style={styles.imageContainer}>
-					<Image style={styles.image} source={image} />
+		<Marker style={styles.container} coordinate={location} onPress={onPress}>
+			<View style={styles.imageContainer}>
+				<Image style={styles.image} source={image} />
+			</View>
+			{tagText && (
+				<View
+					style={[
+						styles.tagContainer,
+						tagColor ? { backgroundColor: tagColor } : undefined,
+					]}
+				>
+					<Text style={styles.tag}>{tagText}</Text>
 				</View>
-				{tagText && (
-					<View
-						style={[
-							styles.tagContainer,
-							tagColor ? { backgroundColor: tagColor } : undefined,
-						]}
-					>
-						<Text style={styles.tag}>{tagText}</Text>
-					</View>
-				)}
-				<View style={styles.titleContainer}>
-					<Text style={styles.title}>{title}</Text>
-				</View>
-			</TouchableOpacity>
+			)}
+			<View style={styles.titleContainer}>
+				<Text style={styles.title}>{title || 'Unknown'}</Text>
+			</View>
 		</Marker>
 	);
 };
@@ -52,6 +47,7 @@ export const Place: FC<Props> = ({
 export default Place;
 
 const styles = StyleSheet.create({
+	container: { paddingRight: 14 },
 	imageContainer: {
 		backgroundColor: '#FFFFFF',
 		padding: 4,
@@ -73,7 +69,7 @@ const styles = StyleSheet.create({
 		paddingVertical: 2,
 		borderRadius: 10,
 		position: 'absolute',
-		right: -8,
+		right: 0,
 		top: 4,
 		backgroundColor: '#24B24C',
 	},
