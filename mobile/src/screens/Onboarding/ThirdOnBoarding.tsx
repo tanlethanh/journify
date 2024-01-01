@@ -8,7 +8,7 @@ export const ThirdOnBoarding = () => {
 	const navigation = useNavigation();
 
 	const handlePressNext = () => {
-		navigation.navigate('Map' as never);
+		navigation.navigate('MainNavigator' as never);
 	};
 	return (
 		<View style={styles.container}>
