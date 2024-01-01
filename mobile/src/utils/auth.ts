@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import Config from 'react-native-config';
-import auth from '@react-native-firebase/auth';
+import auth, { firebase } from '@react-native-firebase/auth';
 import type { User } from '@react-native-google-signin/google-signin';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 
@@ -22,6 +22,7 @@ export const signInWithGoogle = async () => {
 };
 
 type WrappedUser = User & {
+	displayName: string;
 	photoURL: string;
 };
 
@@ -39,4 +40,8 @@ export const useAuth = () => {
 	}, []);
 
 	return { initializing, user };
+};
+
+export const getUser = (): WrappedUser | null => {
+	return firebase.auth().currentUser as never;
 };

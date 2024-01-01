@@ -1,15 +1,18 @@
-import { StyleSheet, TouchableOpacity, useColorScheme } from 'react-native';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
+import { useMemo } from 'react';
+import { Image, StyleSheet } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { BookUser, Home, Map, SignpostBig } from 'lucide-react-native';
+import { HomeIcon, MapIcon, SignpostBigIcon } from 'lucide-react-native';
 import { ThemeColors } from 'src/theme';
+
+import { useAuth } from './auth';
 
 import Explore from '@/screens/Explore';
 import Homepage from '@/screens/Homepage';
+import Map from '@/screens/Map';
 import User from '@/screens/User';
 
 enum TabScreens {
-	HOMEPAGE = 'Homepage',
+	HOMEPAGE = 'Home',
 	EXPLORE = 'Explore',
 	MAP = 'Map',
 	USER = 'User',
@@ -25,109 +28,71 @@ export type TabParamList = {
 const Tab = createBottomTabNavigator<TabParamList>();
 
 export const MainNavigator = () => {
-	const isDarkMode = useColorScheme() === 'dark';
+	const { user } = useAuth();
+	const profileName = useMemo(() => {
+		const words = user?.displayName.split(' ') || [];
+		if (words?.length <= 2) return user?.displayName;
+		else return user?.displayName;
+	}, [user]);
+
 	return (
 		<Tab.Navigator
 			initialRouteName={TabScreens.HOMEPAGE}
-			screenOptions={({ route }) => ({
-				headerShown: false,
-				tabBarIcon: ({ color }) => {
-					if (route.name === TabScreens.USER) {
-						return <BookUser color={color} />;
-					} else if (route.name === TabScreens.EXPLORE) {
-						return <SignpostBig color={color} />;
-					} else if (route.name === TabScreens.MAP) {
-						return <Map color={color} />;
-					}
-					return <Home color={color} />;
-				},
-				tabBarStyle: {
-					width: '100%',
-					height: '7%',
-					paddingTop: '2%',
-					paddingBottom: '2%',
-				},
-				tabBarLabelStyle: {
-					fontSize: 12,
-					marginTop: 0,
-				},
+			screenOptions={{
+				tabBarStyle: styles.tabBarStyle,
+				tabBarLabelStyle: styles.tabBarLabelStyle,
 				tabBarActiveTintColor: ThemeColors.PRIMARY,
-				tabBarInactiveTintColor: isDarkMode ? Colors.white : Colors.black,
-			})}
+			}}
 		>
 			<Tab.Screen
 				name={TabScreens.HOMEPAGE}
 				component={Homepage}
-				options={({ navigation }) => ({
-					headerShown: true,
-					title: TabScreens.HOMEPAGE,
-					headerTitleAlign: 'left',
-					headerStyle: styles.headerStyle,
-					headerRight: () => (
-						<TouchableOpacity
-							style={styles.headerRight}
-							onPress={() => navigation.navigate('Map')}
-						>
-							<Map color={isDarkMode ? Colors.white : Colors.black} />
-						</TouchableOpacity>
-					),
-				})}
+				options={{ tabBarIcon: ({ color }) => <HomeIcon color={color} /> }}
+			/>
+			<Tab.Screen
+				name={TabScreens.MAP}
+				component={Map}
+				options={{
+					headerShown: false,
+					tabBarIcon: ({ color }) => <MapIcon color={color} />,
+				}}
 			/>
 			<Tab.Screen
 				name={TabScreens.EXPLORE}
 				component={Explore}
-				options={({ navigation }) => ({
-					headerShown: true,
-					title: TabScreens.EXPLORE,
-					headerTitleAlign: 'left',
-					headerStyle: styles.headerStyle,
-					headerRight: () => (
-						<TouchableOpacity
-							style={styles.headerRight}
-							onPress={() => navigation.navigate('Map')}
-						>
-							<Map color={isDarkMode ? Colors.white : Colors.black} />
-						</TouchableOpacity>
-					),
-				})}
+				options={{
+					tabBarIcon: ({ color }) => <SignpostBigIcon color={color} />,
+				}}
 			/>
 			<Tab.Screen
 				name={TabScreens.USER}
 				component={User}
-				options={({ navigation }) => ({
-					headerShown: true,
-					title: TabScreens.USER,
-					headerTitleAlign: 'left',
-					headerStyle: styles.headerStyle,
-					headerRight: () => (
-						<TouchableOpacity
-							style={styles.headerRight}
-							onPress={() => navigation.navigate('Map')}
-						>
-							<Map color={isDarkMode ? Colors.white : Colors.black} />
-						</TouchableOpacity>
-					),
-				})}
+				options={{
+					tabBarLabel: profileName || 'User',
+					tabBarIcon: ({ color }) =>
+						user?.photoURL ? (
+							<Image style={styles.avatar} source={{ uri: user.photoURL }} />
+						) : (
+							<SignpostBigIcon color={color} />
+						),
+				}}
 			/>
 		</Tab.Navigator>
 	);
 };
 
 const styles = StyleSheet.create({
-	headerRight: {
-		justifyContent: 'center',
-		alignItems: 'center',
-		padding: 8,
+	avatar: {
+		width: 32,
+		height: 32,
+		borderRadius: 16,
 	},
-	headerStyle: {
-		backgroundColor: '#FFFFFF',
-		shadowOffset: {
-			width: 0,
-			height: 3,
-		},
-		shadowColor: 'black',
-		shadowOpacity: 1,
-		shadowRadius: 3.84,
-		elevation: 15,
+	tabBarStyle: {
+		height: 60,
+		paddingTop: 4,
+		paddingBottom: 8,
+	},
+	tabBarLabelStyle: {
+		fontSize: 12,
 	},
 });

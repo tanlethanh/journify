@@ -2,8 +2,6 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { MainNavigator } from './MainNavigator';
 
-import Example from '@/screens/Example';
-import Map from '@/screens/Map';
 import {
 	FirstOnBoarding,
 	SecondOnBoarding,
@@ -19,8 +17,6 @@ type RootStackParamList = {
 	SecondOnBoarding: undefined;
 	ThirdOnBoarding: undefined;
 	MainNavigator: undefined;
-	Example: undefined;
-	Map: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -34,8 +30,6 @@ const Router = () => {
 			<Stack.Screen name="SecondOnBoarding" component={SecondOnBoarding} />
 			<Stack.Screen name="ThirdOnBoarding" component={ThirdOnBoarding} />
 			<Stack.Screen name="MainNavigator" component={MainNavigator} />
-			<Stack.Screen name="Map" component={Map} />
-			<Stack.Screen name="Example" component={Example} />
 		</Stack.Navigator>
 	);
 };
