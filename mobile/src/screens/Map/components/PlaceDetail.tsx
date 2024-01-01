@@ -1,7 +1,10 @@
 import type { FC } from 'react';
-import { Image, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Image, StyleSheet, Text, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { useBottomSheetModal } from '@gorhom/bottom-sheet';
+import {
+	BottomSheetScrollView,
+	useBottomSheetModal,
+} from '@gorhom/bottom-sheet';
 import { ChevronLeftIcon } from 'lucide-react-native';
 
 import type { CheckInData, PlaceData } from '../types';
@@ -31,14 +34,14 @@ export const PlaceDetail: FC<Props> = ({ place, checkIns }) => {
 					<Text style={styles.whiteText}>{`· ${value} check-in`}</Text>
 				</View>
 			</View>
-			<ScrollView
+			<BottomSheetScrollView
 				style={styles.scroll}
 				contentContainerStyle={styles.checkInsContainer}
 			>
 				{checkIns.map((c, i) => {
 					return <CheckInDetail key={c.id} checkIn={c} showImage={i > 0} />;
 				})}
-			</ScrollView>
+			</BottomSheetScrollView>
 		</View>
 	);
 };

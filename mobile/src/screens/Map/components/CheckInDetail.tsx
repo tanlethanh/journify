@@ -93,6 +93,7 @@ const styles = StyleSheet.create({
 		marginBottom: 10,
 	},
 	caption: {
+		color: '#000000',
 		fontSize: 15,
 		lineHeight: 22,
 		fontWeight: '300',
