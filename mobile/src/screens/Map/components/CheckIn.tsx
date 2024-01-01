@@ -27,9 +27,9 @@ export const CheckIn: FC<Props> = ({
 				<Image style={styles.banner} source={{ uri: place.imageUrl }} />
 			</TouchableOpacity>
 			<TouchableOpacity style={styles.textContainer} onPress={handlePressPlace}>
-				<Text style={styles.nameText}>{place.name}</Text>
-				<Text>{`· ${place.handle}`}</Text>
-				<Text>{`· ${value} check-in`}</Text>
+				<Text style={[styles.blackText, styles.nameText]}>{place.name}</Text>
+				<Text style={styles.blackText}>{`· ${place.handle}`}</Text>
+				<Text style={styles.blackText}>{`· ${value} check-in`}</Text>
 			</TouchableOpacity>
 			<TouchableOpacity style={styles.button} onPress={onPressCheckIn}>
 				<Text style={styles.buttonText}>Check-in</Text>
@@ -58,6 +58,9 @@ const styles = StyleSheet.create({
 		borderRadius: 16,
 		flexDirection: 'row',
 		gap: 4,
+	},
+	blackText: {
+		color: '#000000',
 	},
 	nameText: {
 		fontWeight: '600',
