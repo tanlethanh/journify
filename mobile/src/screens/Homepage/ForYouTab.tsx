@@ -1,5 +1,4 @@
 import {
-	Image,
 	ScrollView,
 	StyleSheet,
 	Text,
@@ -20,7 +19,6 @@ export const ForYou = () => {
 	};
 	return (
 		<View style={styles.container}>
-			{/* <Image style={styles.banner} source={{ uri: place.imageUrl }} /> */}
 			<ScrollView
 				style={styles.scroll}
 				contentContainerStyle={styles.checkInsContainer}
@@ -76,11 +74,12 @@ const styles = StyleSheet.create({
 	},
 	button: {
 		backgroundColor: '#24B24C',
-		borderRadius: 100,
 		alignItems: 'center',
 		justifyContent: 'center',
-		height: 30,
-		width: 150,
+		alignSelf: 'flex-start',
+		paddingHorizontal: 20,
+		paddingVertical: 10,
+		borderRadius: 10,
 	},
 	buttonText: {
 		fontSize: 12,
@@ -88,13 +87,15 @@ const styles = StyleSheet.create({
 		color: '#FFFFFF',
 	},
 	title: {
+		color: '#000000',
 		fontSize: 16,
 		fontWeight: '700',
 	},
 	suggestionText: {
-		flex: 1,
+		color: '#000000',
 		textAlign: 'left',
 		fontSize: 15,
+		lineHeight: 20,
 	},
 	suggestion: {
 		flex: 1,

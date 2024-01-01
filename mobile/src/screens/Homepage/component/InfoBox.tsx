@@ -61,6 +61,7 @@ const styles = StyleSheet.create({
 		height: 16,
 	},
 	name: {
+		color: '#000000',
 		fontSize: 16,
 		fontWeight: '700',
 	},
@@ -68,6 +69,7 @@ const styles = StyleSheet.create({
 		color: '#5a5959',
 	},
 	infoDescription: {
+		color: '#000000',
 		fontSize: 12,
 		fontWeight: '300',
 	},

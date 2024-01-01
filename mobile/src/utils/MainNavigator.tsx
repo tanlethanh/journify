@@ -31,7 +31,7 @@ export const MainNavigator = () => {
 			initialRouteName={TabScreens.HOMEPAGE}
 			screenOptions={({ route }) => ({
 				headerShown: false,
-				tabBarIcon: ({ focused, color, size }) => {
+				tabBarIcon: ({ color }) => {
 					if (route.name === TabScreens.USER) {
 						return <BookUser color={color} />;
 					} else if (route.name === TabScreens.EXPLORE) {
@@ -58,7 +58,7 @@ export const MainNavigator = () => {
 			<Tab.Screen
 				name={TabScreens.HOMEPAGE}
 				component={Homepage}
-				options={({ navigation, route }) => ({
+				options={({ navigation }) => ({
 					headerShown: true,
 					title: TabScreens.HOMEPAGE,
 					headerTitleAlign: 'left',
@@ -76,7 +76,7 @@ export const MainNavigator = () => {
 			<Tab.Screen
 				name={TabScreens.EXPLORE}
 				component={Explore}
-				options={({ navigation, route }) => ({
+				options={({ navigation }) => ({
 					headerShown: true,
 					title: TabScreens.EXPLORE,
 					headerTitleAlign: 'left',
@@ -94,7 +94,7 @@ export const MainNavigator = () => {
 			<Tab.Screen
 				name={TabScreens.USER}
 				component={User}
-				options={({ navigation, route }) => ({
+				options={({ navigation }) => ({
 					headerShown: true,
 					title: TabScreens.USER,
 					headerTitleAlign: 'left',
