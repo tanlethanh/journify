@@ -23,7 +23,12 @@ export const Place: FC<Props> = ({
 	onPress,
 }) => {
 	return (
-		<Marker style={styles.container} coordinate={location} onPress={onPress}>
+		<Marker
+			style={styles.container}
+			coordinate={location}
+			onPress={onPress}
+			tracksViewChanges={false}
+		>
 			<View style={styles.imageContainer}>
 				<Image style={styles.image} source={image} />
 			</View>

@@ -12,7 +12,7 @@ type Props = {
 
 export const User: FC<Props> = ({ imageUrl, location }) => {
 	return (
-		<Marker coordinate={location}>
+		<Marker coordinate={location} tracksViewChanges={false}>
 			<Image style={styles.image} source={{ uri: imageUrl }} />
 			<View style={styles.iconContainer}>
 				<MapPin fill="#3478F6" color="#FFFFFF" />
