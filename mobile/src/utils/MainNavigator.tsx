@@ -69,6 +69,7 @@ export const MainNavigator = () => {
 				name={TabScreens.USER}
 				component={User}
 				options={{
+					headerShown: false,
 					tabBarLabel: profileName || 'User',
 					tabBarIcon: ({ color }) =>
 						user?.photoURL ? (
