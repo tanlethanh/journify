@@ -39,6 +39,7 @@ export const MainNavigator = () => {
 		<Tab.Navigator
 			initialRouteName={TabScreens.HOMEPAGE}
 			screenOptions={{
+				headerTitleAlign: 'left',
 				tabBarStyle: styles.tabBarStyle,
 				tabBarLabelStyle: styles.tabBarLabelStyle,
 				tabBarActiveTintColor: ThemeColors.PRIMARY,
