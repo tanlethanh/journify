@@ -1,6 +1,7 @@
 import type { NestModule } from '@nestjs/common';
 import { Module } from '@nestjs/common';
 
+import { FirebaseProvider } from './auth/auth.provider';
 import { PostsModule } from './posts/posts.module';
 import { PostsService } from './posts/posts.service';
 import { UsersModule } from './users/users.module';
@@ -12,7 +13,13 @@ import { PrismaService } from './prisma.service';
 @Module({
 	imports: [UsersModule, PostsModule],
 	controllers: [AppController],
-	providers: [PrismaService, AppService, PostsService, UsersService],
+	providers: [
+		PrismaService,
+		AppService,
+		PostsService,
+		UsersService,
+		FirebaseProvider,
+	],
 })
 export class AppModule implements NestModule {
 	configure() {}

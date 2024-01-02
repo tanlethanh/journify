@@ -1,10 +1,11 @@
-import { Controller, Get, Param, Put } from '@nestjs/common';
+import { Controller, Get, Param, Put, UseGuards } from '@nestjs/common';
 import { ApiBearerAuth, ApiParam } from '@nestjs/swagger';
 import type { Post as PostModel } from '@prisma/client';
 
+import { Auth, UserAuth } from './auth/auth.decorator';
+import { AuthGuard } from './auth/auth.guard';
 import { PostsService } from './posts/posts.service';
 import { UsersService } from './users/users.service';
-import { Auth, UserAuth } from './decorators';
 
 @Controller()
 export class AppController {
@@ -15,6 +16,7 @@ export class AppController {
 
 	@Get()
 	@ApiBearerAuth()
+	@UseGuards(AuthGuard)
 	getHello(@Auth() user: UserAuth): string {
 		console.log(user, '<-- user from controller');
 		return "Hello, we're Zenonian Labs";
