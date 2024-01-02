@@ -1,12 +1,12 @@
-import type { Region } from 'react-native-maps';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
 
-type AppStateType = {
-	location: Region;
-};
+import type { AppStateType } from '@/types';
 
 const initialState: AppStateType = {
+	user: {
+		votes: {},
+	},
 	// Ho Chi Minh city
 	location: {
 		latitude: 10.762622,
@@ -27,8 +27,17 @@ const appSlice = createSlice({
 				longitude: action.payload.long,
 			};
 		},
+		vote(state, action: PayloadAction<{ id: string; vote: 'up' | 'down' }>) {
+			const { id, vote } = action.payload;
+			const latestVote = state.user.votes[id];
+			if (vote === latestVote) {
+				delete state.user.votes[id];
+			} else {
+				state.user.votes[id] = vote;
+			}
+		},
 	},
 });
 
 export const appReducer = appSlice.reducer;
-export const { setLocation } = appSlice.actions;
+export const { setLocation, vote } = appSlice.actions;

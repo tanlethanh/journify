@@ -1,11 +1,13 @@
 import type { FC } from 'react';
-import { Image, StyleSheet, Text, View } from 'react-native';
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 import InfoBox from './InfoBox';
 
 import {
 	CommentIcon,
 	LikeIcon,
+	SolidLikeIcon,
+	SolidUnlikeIcon,
 	TrendUpIcon,
 	UnlikeIcon,
 } from '@/components/icons';
@@ -15,9 +17,17 @@ type Props = {
 	checkIn: CheckInData;
 	showImage?: boolean;
 	voted?: 'up' | 'down';
+	onUpvotePress?: () => void;
+	onDownvotePress?: () => void;
 };
 
-export const CheckInDetail: FC<Props> = ({ checkIn, showImage, voted }) => {
+export const CheckInDetail: FC<Props> = ({
+	checkIn,
+	showImage,
+	voted,
+	onUpvotePress,
+	onDownvotePress,
+}) => {
 	return (
 		<View style={styles.container}>
 			<InfoBox user={checkIn.user} date={checkIn.date} />
@@ -32,22 +42,24 @@ export const CheckInDetail: FC<Props> = ({ checkIn, showImage, voted }) => {
 					)}
 
 					<View style={styles.actionsContainer}>
-						<View style={styles.action}>
-							<LikeIcon
-								size={20}
-								stroke={voted === 'up' ? '#1F41F4' : '#646464'}
-							/>
+						<TouchableOpacity style={styles.action} onPress={onUpvotePress}>
+							{voted === 'up' ? (
+								<SolidLikeIcon size={20} fill={'#2e8cff'} />
+							) : (
+								<LikeIcon size={20} stroke={'#646464'} />
+							)}
 							<Text style={styles.actionTitle}>{`${checkIn.upvote} up`}</Text>
-						</View>
-						<View style={styles.action}>
-							<UnlikeIcon
-								size={20}
-								stroke={voted === 'down' ? '#1F41F4' : '#646464'}
-							/>
+						</TouchableOpacity>
+						<TouchableOpacity style={styles.action} onPress={onDownvotePress}>
+							{voted === 'down' ? (
+								<SolidUnlikeIcon size={20} fill={'#2e8cff'} />
+							) : (
+								<UnlikeIcon size={20} stroke={'#646464'} />
+							)}
 							<Text
 								style={styles.actionTitle}
 							>{`${checkIn.downvote} down`}</Text>
-						</View>
+						</TouchableOpacity>
 						<View style={styles.action}>
 							<CommentIcon size={20} stroke={'#646464'} />
 							<Text

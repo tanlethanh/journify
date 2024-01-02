@@ -9,16 +9,16 @@ import { store } from './store';
 
 function App(): JSX.Element {
 	return (
-		<UIProvider>
-			<StateProvider store={store}>
+		<StateProvider store={store}>
+			<UIProvider>
 				<NavigationContainer>
 					<StatusBar translucent backgroundColor={'transparent'} />
 					<SafeAreaProvider style={styles.container}>
 						<Router />
 					</SafeAreaProvider>
 				</NavigationContainer>
-			</StateProvider>
-		</UIProvider>
+			</UIProvider>
+		</StateProvider>
 	);
 }
 

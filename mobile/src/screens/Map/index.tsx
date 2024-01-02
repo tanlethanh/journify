@@ -4,7 +4,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 
 import { CheckIn, Discovery, Place, Search, User } from './components';
-import { showDetailPlaceModal } from './modal';
+import { showDetailPlaceModal } from './PlaceModal';
 
 import type { PlaceData } from '@/types';
 import { useAuth } from '@/utils/auth';
@@ -13,17 +13,14 @@ import { inspectCheckInCount, useLocation, usePlaces } from '@/utils/map';
 export const Map = () => {
 	const { user } = useAuth();
 	const { region } = useLocation();
-	const { places, checkIns } = usePlaces();
+	const { places } = usePlaces();
 	const { top } = useSafeAreaInsets();
 	const currentPlace = places[0];
 	const navigation = useNavigation();
 	const searchBarStyle = { ...styles.searchBar, top };
 
 	const handlePressPlace = (place: PlaceData) => {
-		showDetailPlaceModal(
-			place,
-			checkIns.filter((c) => c.placeId === place.id),
-		);
+		showDetailPlaceModal(place);
 	};
 
 	const handlePressCheckIn = () => {

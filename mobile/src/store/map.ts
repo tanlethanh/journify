@@ -1,12 +1,7 @@
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
 
-import type { CheckInData, PlaceData } from './types';
-
-type PlacesStateType = {
-	places: PlaceData[];
-	checkIns: CheckInData[];
-};
+import type { CheckInData, PlaceData, PlacesStateType } from '@/types';
 
 const initialState: PlacesStateType = {
 	places: [],
@@ -23,8 +18,26 @@ const mapSlice = createSlice({
 		setCheckIns(state, action: PayloadAction<{ checkIns: CheckInData[] }>) {
 			state.checkIns = action.payload.checkIns;
 		},
+		updateVote(
+			state,
+			action: PayloadAction<{
+				checkInId: string;
+				amount: number;
+				type: 'up' | 'down';
+			}>,
+		) {
+			const { checkInId, amount, type } = action.payload;
+			const idx = state.checkIns.findIndex((c) => c.id === checkInId);
+			if (idx != -1) {
+				if (type === 'up') {
+					state.checkIns[idx].upvote += amount;
+				} else if (type === 'down') {
+					state.checkIns[idx].downvote += amount;
+				}
+			}
+		},
 	},
 });
 
 export const mapReducer = mapSlice.reducer;
-export const { setPlaces, setCheckIns } = mapSlice.actions;
+export const { setPlaces, setCheckIns, updateVote } = mapSlice.actions;
