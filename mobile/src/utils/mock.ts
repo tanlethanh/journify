@@ -1,4 +1,4 @@
-import type { CheckInData, Location, PlaceData } from '@/store/types';
+import type { CheckInData, Location, PlaceData } from '@/types';
 
 export const getMockedPlaces = (loc: Location): PlaceData[] => {
 	return [

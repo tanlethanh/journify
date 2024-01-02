@@ -6,7 +6,7 @@ import { useNavigation } from '@react-navigation/native';
 import { CheckIn, Discovery, Place, Search, User } from './components';
 import { showDetailPlaceModal } from './modal';
 
-import type { PlaceData } from '@/store';
+import type { PlaceData } from '@/types';
 import { useAuth } from '@/utils/auth';
 import { inspectCheckInCount, useLocation, usePlaces } from '@/utils/map';
 

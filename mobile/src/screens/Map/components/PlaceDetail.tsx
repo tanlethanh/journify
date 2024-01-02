@@ -9,7 +9,7 @@ import { ChevronLeftIcon } from 'lucide-react-native';
 
 import CheckInDetail from './CheckInDetail';
 
-import type { CheckInData, PlaceData } from '@/store/types';
+import type { CheckInData, PlaceData } from '@/types';
 import { inspectCheckInCount } from '@/utils/map';
 
 type Props = {
@@ -39,7 +39,14 @@ export const PlaceDetail: FC<Props> = ({ place, checkIns }) => {
 				contentContainerStyle={styles.checkInsContainer}
 			>
 				{checkIns.map((c, i) => {
-					return <CheckInDetail key={c.id} checkIn={c} showImage={i > 0} />;
+					return (
+						<CheckInDetail
+							key={c.id}
+							checkIn={c}
+							showImage={i > 0}
+							voted="up"
+						/>
+					);
 				})}
 			</BottomSheetScrollView>
 		</View>

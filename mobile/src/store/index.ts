@@ -13,4 +13,3 @@ export const store = configureStore({
 export type RootState = ReturnType<typeof store.getState>;
 export * from './app';
 export * from './map';
-export * from './types';

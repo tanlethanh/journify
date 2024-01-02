@@ -6,8 +6,9 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { getMockedPlaces, mockedCheckIns } from './mock';
 
-import type { PlaceData, RootState } from '@/store';
+import type { RootState } from '@/store';
 import { setCheckIns, setLocation, setPlaces } from '@/store';
+import type { PlaceData } from '@/types';
 
 export const useLocation = () => {
 	const location = useSelector((state: RootState) => state.app.location);

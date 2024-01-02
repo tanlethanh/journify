@@ -1,8 +1,6 @@
 import type { FC } from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
 
-import type { CheckInData } from '../types';
-
 import InfoBox from './InfoBox';
 
 import {
@@ -11,13 +9,15 @@ import {
 	TrendUpIcon,
 	UnlikeIcon,
 } from '@/components/icons';
+import type { CheckInData } from '@/types';
 
 type Props = {
 	checkIn: CheckInData;
 	showImage?: boolean;
+	voted?: 'up' | 'down';
 };
 
-export const CheckInDetail: FC<Props> = ({ checkIn, showImage }) => {
+export const CheckInDetail: FC<Props> = ({ checkIn, showImage, voted }) => {
 	return (
 		<View style={styles.container}>
 			<InfoBox user={checkIn.user} date={checkIn.date} />
@@ -33,11 +33,17 @@ export const CheckInDetail: FC<Props> = ({ checkIn, showImage }) => {
 
 					<View style={styles.actionsContainer}>
 						<View style={styles.action}>
-							<LikeIcon size={20} stroke={'#646464'} />
+							<LikeIcon
+								size={20}
+								stroke={voted === 'up' ? '#1F41F4' : '#646464'}
+							/>
 							<Text style={styles.actionTitle}>{`${checkIn.upvote} up`}</Text>
 						</View>
 						<View style={styles.action}>
-							<UnlikeIcon size={20} stroke={'#646464'} />
+							<UnlikeIcon
+								size={20}
+								stroke={voted === 'down' ? '#1F41F4' : '#646464'}
+							/>
 							<Text
 								style={styles.actionTitle}
 							>{`${checkIn.downvote} down`}</Text>

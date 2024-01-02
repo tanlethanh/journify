@@ -1,6 +1,6 @@
 import { PlaceDetail } from './components';
-import type { CheckInData, PlaceData } from './types';
 
+import type { CheckInData, PlaceData } from '@/types';
 import { showModal } from '@/utils/modal';
 
 export const showDetailPlaceModal = (
