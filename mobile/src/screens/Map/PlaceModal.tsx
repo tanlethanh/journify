@@ -8,10 +8,9 @@ import {
 } from '@gorhom/bottom-sheet';
 import { ChevronLeftIcon } from 'lucide-react-native';
 
-import CheckInDetail from './components/CheckInDetail';
-
-import { vote } from '@/store/app';
-import { type RootState, updateVote } from '@/store/index';
+import { CheckInDetail } from '@/components';
+import type { RootState } from '@/store';
+import { updateVote, vote } from '@/store';
 import type { PlaceData } from '@/types';
 import { inspectCheckInCount, usePlaces } from '@/utils/map';
 import { showModal } from '@/utils/modal';

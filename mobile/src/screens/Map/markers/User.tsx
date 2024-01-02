@@ -3,7 +3,7 @@ import { Image, StyleSheet, View } from 'react-native';
 import { Marker } from 'react-native-maps';
 import { MapPin } from 'lucide-react-native';
 
-import type { Location } from '../types';
+import type { Location } from '@/types';
 
 type Props = {
 	imageUrl: string;

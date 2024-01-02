@@ -2,7 +2,7 @@ import type { FC } from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
 import { MoreHorizontalIcon } from 'lucide-react-native';
 
-import type { UserInfo } from '../mock';
+import type { UserInfo } from '@/types';
 
 type Props = {
 	user: UserInfo;
@@ -10,7 +10,7 @@ type Props = {
 	showOption?: boolean;
 };
 
-const InfoBox: FC<Props> = ({ user, date, showOption = true }) => {
+export const InfoBox: FC<Props> = ({ user, date, showOption = true }) => {
 	return (
 		<View style={styles.container}>
 			<Image style={styles.avatar} source={{ uri: user.image }} />

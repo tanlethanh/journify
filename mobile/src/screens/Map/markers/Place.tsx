@@ -3,7 +3,7 @@ import type { ColorValue, ImageSourcePropType } from 'react-native';
 import { Image, StyleSheet, Text, View } from 'react-native';
 import { Marker } from 'react-native-maps';
 
-import type { Location } from '../types';
+import type { Location } from '@/types';
 
 type Props = {
 	title?: string;

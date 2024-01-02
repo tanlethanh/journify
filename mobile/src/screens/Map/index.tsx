@@ -3,8 +3,11 @@ import MapView from 'react-native-maps';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 
-import { CheckIn, Discovery, Place, Search, User } from './components';
+import { CheckIn } from './CheckIn';
+import Discovery from './Discovery';
+import { Place, User } from './markers';
 import { showDetailPlaceModal } from './PlaceModal';
+import Search from './Search';
 
 import type { PlaceData } from '@/types';
 import { useAuth } from '@/utils/auth';
