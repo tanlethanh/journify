@@ -1,6 +1,7 @@
 import { StyleSheet, View } from 'react-native';
 import MapView from 'react-native-maps';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { useNavigation } from '@react-navigation/native';
 
 import { CheckIn, Discovery, Place, Search, User } from './components';
 import { showDetailPlaceModal } from './modal';
@@ -21,10 +22,15 @@ export const Map = () => {
 	const { top } = useSafeAreaInsets();
 	const currentPlace = places[0];
 	const searchBarStyle = { ...styles.searchBar, top };
-
+	const navigation = useNavigation();
 	const handlePressPlace = (place: PlaceData) => {
 		const checkIns = getCheckIns(place);
 		showDetailPlaceModal(place, checkIns);
+	};
+
+	const handlePressCheckin = () => {
+		console.log('aaaaaaaaaaaa');
+		navigation.navigate('Checkin' as never);
 	};
 
 	return (
@@ -59,6 +65,7 @@ export const Map = () => {
 					style={styles.bottomView}
 					place={currentPlace}
 					onPressPlace={handlePressPlace}
+					onPressCheckIn={handlePressCheckin}
 				/>
 			) : (
 				<Discovery style={styles.bottomView} />

@@ -30,6 +30,7 @@
     "react-native-config": "^1.5.1",
     "react-native-geolocation-service": "patch:react-native-geolocation-service@npm%3A5.3.1#./.yarn/patches/react-native-geolocation-service-npm-5.3.1-4a62ced778.patch",
     "react-native-gesture-handler": "^2.14.0",
+    "react-native-image-picker": "^7.1.0",
     "react-native-maps": "^1.8.4",
     "react-native-pager-view": "^6.2.3",
     "react-native-reanimated": "^3.6.0",
