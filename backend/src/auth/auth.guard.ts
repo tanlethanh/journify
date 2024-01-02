@@ -1,5 +1,10 @@
 import type { CanActivate, ExecutionContext } from '@nestjs/common';
-import { Inject, Injectable, UnauthorizedException } from '@nestjs/common';
+import {
+	ForbiddenException,
+	Inject,
+	Injectable,
+	UnauthorizedException,
+} from '@nestjs/common';
 import type { User } from '@prisma/client';
 import { app } from 'firebase-admin';
 import type { DecodedIdToken } from 'firebase-admin/lib/auth/token-verifier';
@@ -29,9 +34,8 @@ export class AuthGuard implements CanActivate {
 
 		let authToken: DecodedIdToken;
 		try {
-			authToken = await this.firebase.auth().verifyIdToken(authHeader);
-		} catch (e) {
-			console.log('decode auth token error', e);
+			authToken = await this.firebase.auth().verifyIdToken(token);
+		} catch {
 			throw new UnauthorizedException('invalid auth token');
 		}
 
@@ -39,6 +43,11 @@ export class AuthGuard implements CanActivate {
 		const user = await this.prisma.user.findUnique({
 			where: { firebaseUID: uid },
 		});
+
+		if (!user)
+			throw new ForbiddenException(
+				`the user is not initialized, email ${authToken.email} uid ${authToken.uid}`,
+			);
 
 		request.user = user;
 
