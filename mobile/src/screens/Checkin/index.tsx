@@ -1,4 +1,3 @@
-import type React from 'react';
 import { useState } from 'react';
 import {
 	Button,
@@ -51,7 +50,7 @@ const CheckIn = () => {
 			)}
 			<TouchableOpacity onPress={handleImagePick} style={styles.attachment}>
 				<FileImage color={isDarkMode ? Colors.white : Colors.black} />
-				<Text>Addd Image</Text>
+				<Text>Add Image</Text>
 			</TouchableOpacity>
 			<Button title="Post" onPress={handleSubmit} />
 		</View>
