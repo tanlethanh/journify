@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import type { Post, Prisma } from '@prisma/client';
+import type { CheckIn, Post, Prisma } from '@prisma/client';
 
 import { PrismaService } from '../prisma.service';
 
@@ -37,7 +37,12 @@ export class PostsService {
 			data,
 		});
 	}
+	////////////
 
+	async createCheckin(data: Prisma.CheckInCreateInput): Promise<CheckIn> {
+		return this.prisma.checkIn.create({ data });
+	}
+	////////////
 	async updatePost(params: {
 		where: Prisma.PostWhereUniqueInput;
 		data: Prisma.PostUpdateInput;

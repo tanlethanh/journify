@@ -8,9 +8,10 @@ import {
 	Post,
 } from '@nestjs/common';
 import { ApiParam, ApiResponse } from '@nestjs/swagger';
+import type { CheckIn as CheckInModel } from '@prisma/client';
 import type { Post as PostModel } from '@prisma/client';
 
-import { CreatePostDto } from './dto/create-post.dto';
+import { CreateCheckInDto } from './dto/create-post.dto';
 import { UpdatePostDto } from './dto/update-post.dto';
 import { Post as PostEntity } from './entities/post.entity';
 import { PostsService } from './posts.service';
@@ -32,13 +33,22 @@ export class PostsController {
 		status: 500,
 		description: 'Something went wrong with server. Please try again later!',
 	})
-	async create(@Body() createPostDto: CreatePostDto): Promise<PostModel> {
-		const { title, content, checkIn, published } = createPostDto;
-		return this.postsService.createPost({
-			title,
-			content,
-			checkIn,
-			published,
+	// async create(@Body() createPostDto: CreatePostDto): Promise<PostModel> {
+	// 	const { title, content, checkIn, published } = createPostDto;
+	// 	return this.postsService.createPost({
+	// 		title,
+	// 		content,
+	// 		checkIn,
+	// 		published,
+	// 	});
+	// }
+	async create(
+		@Body() createCheckInDto: CreateCheckInDto,
+	): Promise<CheckInModel> {
+		const { caption, imageURL } = createCheckInDto;
+		return this.postsService.createCheckin({
+			caption,
+			imageURL,
 		});
 	}
 

@@ -31,3 +31,13 @@ export class CreatePostDto {
 	@IsBoolean()
 	published: boolean;
 }
+
+export class CreateCheckInDto {
+	@ApiProperty()
+	@IsString()
+	caption: string;
+
+	@ApiPropertyOptional()
+	@IsString()
+	imageURL: string;
+}
