@@ -1,3 +1,4 @@
+import type { NestModule } from '@nestjs/common';
 import { Module } from '@nestjs/common';
 
 import { PostsModule } from './posts/posts.module';
@@ -13,4 +14,6 @@ import { PrismaService } from './prisma.service';
 	controllers: [AppController],
 	providers: [PrismaService, AppService, PostsService, UsersService],
 })
-export class AppModule {}
+export class AppModule implements NestModule {
+	configure() {}
+}

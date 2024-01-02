@@ -7,6 +7,7 @@ async function bootstrap() {
 	const app = await NestFactory.create(AppModule);
 
 	const config = new DocumentBuilder()
+		.addBearerAuth()
 		.setTitle('Journify API')
 		.setDescription(
 			'RESTful API for Journify - A trusted, memorable, and enjoyable travel experience mobile application',
