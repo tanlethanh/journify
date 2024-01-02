@@ -2,6 +2,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { MainNavigator } from './MainNavigator';
 
+import Checkin from '@/screens/Checkin';
 import {
 	FirstOnBoarding,
 	SecondOnBoarding,
@@ -17,6 +18,7 @@ type RootStackParamList = {
 	SecondOnBoarding: undefined;
 	ThirdOnBoarding: undefined;
 	MainNavigator: undefined;
+	Checkin: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -30,6 +32,15 @@ const Router = () => {
 			<Stack.Screen name="SecondOnBoarding" component={SecondOnBoarding} />
 			<Stack.Screen name="ThirdOnBoarding" component={ThirdOnBoarding} />
 			<Stack.Screen name="MainNavigator" component={MainNavigator} />
+			<Stack.Screen
+				name="Checkin"
+				component={Checkin}
+				options={({ navigation, route }) => ({
+					headerShown: true,
+					title: 'Check-in',
+					headerTitleAlign: 'center',
+				})}
+			/>
 		</Stack.Navigator>
 	);
 };
