@@ -1,4 +1,5 @@
 import {
+	BadRequestException,
 	Body,
 	Controller,
 	Delete,
@@ -22,10 +23,10 @@ import {
 	ApiQuery,
 } from '@nestjs/swagger';
 import type { User as UserModel } from '@prisma/client';
-import { Auth, UserAuth } from 'src/auth/auth.decorator';
+import { Auth, ConfigAuth, TokenAuth, UserAuth } from 'src/auth/auth.decorator';
 import { AuthGuard } from 'src/auth/auth.guard';
 
-import { CreateUserDto, DeleteUserDto, UpdateUserDto } from './dto';
+import { DeleteUserDto, UpdateUserDto } from './dto';
 import { UsersService } from './users.service';
 
 @Controller('users')
@@ -39,7 +40,7 @@ export class UsersController {
 	@ApiForbiddenResponse()
 	@ApiBearerAuth()
 	@UseGuards(AuthGuard)
-	get(
+	getUserByID(
 		@Param('id', new ParseIntPipe()) id: number,
 		@Auth() user: UserAuth,
 	): Promise<UserModel> {
@@ -54,7 +55,7 @@ export class UsersController {
 	@ApiForbiddenResponse()
 	@ApiBearerAuth()
 	@UseGuards(AuthGuard)
-	getByFirebaseUID(
+	getUserByFirebaseUID(
 		@Query('firebaseUID') firebaseUID: string,
 		@Auth() user: UserAuth,
 	): Promise<UserModel> {
@@ -66,14 +67,23 @@ export class UsersController {
 	@Post()
 	@ApiAcceptedResponse()
 	@ApiBadRequestResponse()
-	create(@Body() createUserDto: CreateUserDto): Promise<UserModel> {
-		const { name, email, firebaseUID } = createUserDto;
-		return this.usersService.createUser({
-			name,
-			email,
-			firebaseUID,
-			onboarding: false,
-		});
+	@ApiBearerAuth()
+	@ConfigAuth({ justCheckAuth: true })
+	@UseGuards(AuthGuard)
+	async createUser(@Auth('token') token: TokenAuth): Promise<UserModel> {
+		const { name, email, uid } = token;
+		try {
+			return await this.usersService.createUser({
+				name,
+				email,
+				firebaseUID: uid,
+				onboarding: false,
+			});
+		} catch (e) {
+			throw new BadRequestException(
+				`can not create user, email ${email}, uid: ${uid}`,
+			);
+		}
 	}
 
 	@Put()

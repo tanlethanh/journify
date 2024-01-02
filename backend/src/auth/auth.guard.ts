@@ -5,12 +5,18 @@ import {
 	Injectable,
 	UnauthorizedException,
 } from '@nestjs/common';
+import { Reflector } from '@nestjs/core';
 import type { User } from '@prisma/client';
 import { app } from 'firebase-admin';
 import type { DecodedIdToken } from 'firebase-admin/lib/auth/token-verifier';
 import { PrismaService } from 'src/prisma.service';
 
-export type ExtendedRequest = Request & { user: User };
+import type { AuthOptions } from './auth.decorator';
+
+export type ExtendedRequest = Request & {
+	user: User;
+	authToken: DecodedIdToken;
+};
 
 @Injectable()
 export class AuthGuard implements CanActivate {
@@ -18,11 +24,17 @@ export class AuthGuard implements CanActivate {
 	constructor(
 		@Inject('FIREBASE_APP') injectedFirebase: app.App,
 		private prisma: PrismaService,
+		private reflector: Reflector,
 	) {
 		this.firebase = injectedFirebase;
 	}
 
 	async canActivate(context: ExecutionContext): Promise<boolean> {
+		const options = this.reflector.get<AuthOptions>(
+			'authOptions',
+			context.getHandler(),
+		);
+
 		const request = context.switchToHttp().getRequest() as ExtendedRequest;
 		const authHeader = request.headers['authorization'] as string;
 
@@ -37,6 +49,12 @@ export class AuthGuard implements CanActivate {
 			authToken = await this.firebase.auth().verifyIdToken(token);
 		} catch {
 			throw new UnauthorizedException('invalid auth token');
+		}
+
+		request.authToken = authToken;
+
+		if (options?.justCheckAuth) {
+			return true;
 		}
 
 		const uid = authToken.uid;
