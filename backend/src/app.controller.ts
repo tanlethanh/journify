@@ -18,8 +18,7 @@ export class AppController {
 	@ApiBearerAuth()
 	@UseGuards(AuthGuard)
 	getHello(@Auth() user: UserAuth): string {
-		console.log(user, '<-- user from controller');
-		return "Hello, we're Zenonian Labs";
+		return `Hello ${user.name}, we're Zenonian Labs`;
 	}
 
 	@Get('feed')

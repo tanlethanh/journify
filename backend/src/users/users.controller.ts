@@ -2,19 +2,28 @@ import {
 	Body,
 	Controller,
 	Delete,
+	ForbiddenException,
 	Get,
+	Param,
+	ParseIntPipe,
 	Post,
 	Put,
 	Query,
+	UseGuards,
 } from '@nestjs/common';
 import {
 	ApiAcceptedResponse,
 	ApiBadRequestResponse,
+	ApiBearerAuth,
+	ApiForbiddenResponse,
 	ApiNotFoundResponse,
 	ApiOkResponse,
+	ApiParam,
 	ApiQuery,
 } from '@nestjs/swagger';
 import type { User as UserModel } from '@prisma/client';
+import { Auth, UserAuth } from 'src/auth/auth.decorator';
+import { AuthGuard } from 'src/auth/auth.guard';
 
 import { CreateUserDto, DeleteUserDto, UpdateUserDto } from './dto';
 import { UsersService } from './users.service';
@@ -23,12 +32,35 @@ import { UsersService } from './users.service';
 export class UsersController {
 	constructor(private readonly usersService: UsersService) {}
 
-	@Get()
-	@ApiQuery({ name: 'id', type: Number })
+	@Get('/:id')
+	@ApiParam({ name: 'id' })
 	@ApiOkResponse()
 	@ApiNotFoundResponse()
-	get(@Query('id') id: number): Promise<UserModel> {
-		return this.usersService.user({ id: Number(id) });
+	@ApiForbiddenResponse()
+	@ApiBearerAuth()
+	@UseGuards(AuthGuard)
+	get(
+		@Param('id', new ParseIntPipe()) id: number,
+		@Auth() user: UserAuth,
+	): Promise<UserModel> {
+		if (user.id !== id) throw new ForbiddenException('can not get ' + id);
+		return this.usersService.user({ id });
+	}
+
+	@Get()
+	@ApiQuery({ name: 'firebaseUID', required: false })
+	@ApiOkResponse()
+	@ApiNotFoundResponse()
+	@ApiForbiddenResponse()
+	@ApiBearerAuth()
+	@UseGuards(AuthGuard)
+	getByFirebaseUID(
+		@Query('firebaseUID') firebaseUID: string,
+		@Auth() user: UserAuth,
+	): Promise<UserModel> {
+		if (user.firebaseUID !== firebaseUID)
+			throw new ForbiddenException('can not get ' + firebaseUID);
+		return this.usersService.user({ firebaseUID });
 	}
 
 	@Post()
