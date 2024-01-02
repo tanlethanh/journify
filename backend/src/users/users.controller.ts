@@ -80,18 +80,31 @@ export class UsersController {
 				onboarding: false,
 			});
 		} catch (e) {
+			console.log('createUser error', (e as Error).message);
 			throw new BadRequestException(
 				`can not create user, email ${email}, uid: ${uid}`,
 			);
 		}
 	}
 
-	@Put()
+	@Put('/:id')
 	@ApiAcceptedResponse()
 	@ApiBadRequestResponse()
-	update(@Body() updateUserDto: UpdateUserDto): Promise<UserModel> {
-		const { id, ...data } = updateUserDto;
-		return this.usersService.updateUser({ where: { id }, data });
+	@ApiBearerAuth()
+	@UseGuards(AuthGuard)
+	updateUserByID(
+		@Body() updateUserDto: UpdateUserDto,
+		@Param('id', new ParseIntPipe()) id: number,
+		@Auth() user: UserAuth,
+	): Promise<UserModel> {
+		if (user.id !== id) throw new ForbiddenException('can not get ' + id);
+		const { ...data } = updateUserDto;
+		try {
+			return this.usersService.updateUser({ where: { id }, data });
+		} catch (e) {
+			console.log('updateUser error', (e as Error).message);
+			throw new BadRequestException(`can not update user, email ${user.email}`);
+		}
 	}
 
 	@Delete()
