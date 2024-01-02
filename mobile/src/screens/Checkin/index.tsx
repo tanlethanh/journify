@@ -13,6 +13,8 @@ import {
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import { launchImageLibrary } from 'react-native-image-picker';
 import { FileImage } from 'lucide-react-native';
+
+import { postCheckIn } from '@/utils/http';
 const CheckIn = () => {
 	const isDarkMode = useColorScheme() === 'dark';
 
@@ -27,8 +29,10 @@ const CheckIn = () => {
 		});
 	};
 	const handleSubmit = () => {
-		console.log(postText);
-		// You may want to reset the form state after submission
+		postCheckIn({
+			caption: postText,
+			imageURL: postImage,
+		});
 		setPostText('');
 		setPostImage(null);
 	};
