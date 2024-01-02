@@ -7,10 +7,10 @@ import {
 } from '@gorhom/bottom-sheet';
 import { ChevronLeftIcon } from 'lucide-react-native';
 
-import type { CheckInData, PlaceData } from '../types';
-import { inspectCheckInCount } from '../utils';
-
 import CheckInDetail from './CheckInDetail';
+
+import type { CheckInData, PlaceData } from '@/store/types';
+import { inspectCheckInCount } from '@/utils/map';
 
 type Props = {
 	place: PlaceData;

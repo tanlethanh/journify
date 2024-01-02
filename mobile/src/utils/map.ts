@@ -1,22 +1,17 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { PermissionsAndroid, Platform } from 'react-native';
 import Geo from 'react-native-geolocation-service';
-import type { Region } from 'react-native-maps';
 import { interpolateColor } from 'react-native-reanimated';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { checkIns, getMockedPlaces } from './mock';
-import type { PlaceData } from './types';
+import { getMockedPlaces, mockedCheckIns } from './mock';
 
-// Ho Chi Minh city
-const defaultLocation: Region = {
-	latitude: 10.762622,
-	latitudeDelta: 0.04,
-	longitude: 106.660172,
-	longitudeDelta: 0.02,
-};
+import type { PlaceData, RootState } from '@/store';
+import { setCheckIns, setLocation, setPlaces } from '@/store';
 
 export const useLocation = () => {
-	const [region, setRegion] = useState<Region>(defaultLocation);
+	const location = useSelector((state: RootState) => state.app.location);
+	const dispatch = useDispatch();
 
 	const resolveLocation = async () => {
 		const granted = await grantLocationPermission();
@@ -27,12 +22,9 @@ export const useLocation = () => {
 
 		try {
 			const loc = await getCurrentLocation();
-			setRegion({
-				latitude: loc.coords.latitude as number,
-				latitudeDelta: defaultLocation.latitudeDelta,
-				longitude: loc.coords.longitude as number,
-				longitudeDelta: defaultLocation.longitudeDelta,
-			});
+			dispatch(
+				setLocation({ lat: loc.coords.latitude, long: loc.coords.longitude }),
+			);
 		} catch (e) {
 			console.log('can not get current location', e);
 		}
@@ -42,25 +34,33 @@ export const useLocation = () => {
 		resolveLocation();
 
 		const watchId = Geo.watchPosition((loc) => {
-			setRegion({
-				latitude: loc.coords.altitude as number,
-				latitudeDelta: defaultLocation.latitudeDelta,
-				longitude: loc.coords.longitude as number,
-				longitudeDelta: defaultLocation.longitudeDelta,
-			});
+			dispatch(
+				setLocation({ lat: loc.coords.latitude, long: loc.coords.longitude }),
+			);
 		});
 
 		return Geo.clearWatch(watchId);
 	}, []);
 
-	return { region };
+	return { region: location };
 };
 
 export const usePlaces = () => {
 	const { region } = useLocation();
-	const places = getMockedPlaces(region);
+	const places = useSelector((state: RootState) => state.places.places);
+	const checkIns = useSelector((state: RootState) => state.places.checkIns);
+	const dispatch = useDispatch();
 
-	return { places };
+	useEffect(() => {
+		dispatch(setCheckIns({ checkIns: mockedCheckIns }));
+	}, []);
+
+	useEffect(() => {
+		const updatedPlaces = getMockedPlaces(region);
+		dispatch(setPlaces({ places: updatedPlaces }));
+	}, [region]);
+
+	return { places, checkIns };
 };
 
 export const grantLocationPermission = async (): Promise<boolean> => {
@@ -99,8 +99,4 @@ export const inspectCheckInCount = (place: PlaceData) => {
 	}
 
 	return { color, value };
-};
-
-export const getCheckIns = (place: PlaceData) => {
-	return checkIns.filter((e) => e.placeId === place.id);
 };

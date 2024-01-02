@@ -3938,6 +3938,7 @@ __metadata:
     react-native-config: "npm:^1.5.1"
     react-native-geolocation-service: "patch:react-native-geolocation-service@npm%3A5.3.1#./.yarn/patches/react-native-geolocation-service-npm-5.3.1-4a62ced778.patch"
     react-native-gesture-handler: "npm:^2.14.0"
+    react-native-image-picker: "npm:^7.1.0"
     react-native-maps: "npm:^1.8.4"
     react-native-pager-view: "npm:^6.2.3"
     react-native-reanimated: "npm:^3.6.0"
@@ -14636,6 +14637,16 @@ __metadata:
     react: "*"
     react-native: "*"
   checksum: d567c26756aefc85fb6056efc6be4cdf0c1e7fd45a9d92f4bf0dc0fd94d3e099207398978bac8bdf3fa731f1020d41a7576566b552c525dc71bf7bc270bad25f
+  languageName: node
+  linkType: hard
+
+"react-native-image-picker@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "react-native-image-picker@npm:7.1.0"
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+  checksum: ac44fca648bbc1475d8b64365d179dfe78600329f0702d802a004009c3fb20cf41bd11c59c24736fc7bcea831a76ab3d454cc1502b05dd2e987ce14d12bf4508
   languageName: node
   linkType: hard
 

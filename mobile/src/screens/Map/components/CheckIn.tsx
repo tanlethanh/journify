@@ -2,8 +2,8 @@ import type { FC } from 'react';
 import type { ViewProps } from 'react-native';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
-import type { PlaceData } from '../types';
-import { inspectCheckInCount } from '../utils';
+import type { PlaceData } from '@/store/types';
+import { inspectCheckInCount } from '@/utils/map';
 
 type Props = ViewProps & {
 	place: PlaceData;
