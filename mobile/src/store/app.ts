@@ -20,6 +20,7 @@ const appSlice = createSlice({
 	name: 'app',
 	initialState,
 	reducers: {
+		reset: () => initialState,
 		setLocation(state, action: PayloadAction<{ lat: number; long: number }>) {
 			state.location = {
 				...state.location,
@@ -40,4 +41,4 @@ const appSlice = createSlice({
 });
 
 export const appReducer = appSlice.reducer;
-export const { setLocation, vote } = appSlice.actions;
+export const { setLocation, vote, reset: resetAppState } = appSlice.actions;

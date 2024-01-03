@@ -11,7 +11,7 @@ import {
 import SignIn from '@/screens/SignIn';
 import Splash from '@/screens/Splash';
 
-type RootStackParamList = {
+export type RootStackParamList = {
 	Splash: undefined;
 	SignIn: undefined;
 	FirstOnBoarding: undefined;
@@ -35,7 +35,7 @@ const Router = () => {
 			<Stack.Screen
 				name="Checkin"
 				component={Checkin}
-				options={({ navigation, route }) => ({
+				options={() => ({
 					headerShown: true,
 					title: 'Check-in',
 					headerTitleAlign: 'center',

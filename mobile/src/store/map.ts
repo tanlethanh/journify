@@ -12,6 +12,7 @@ const mapSlice = createSlice({
 	name: 'map',
 	initialState,
 	reducers: {
+		reset: () => initialState,
 		setPlaces(state, action: PayloadAction<{ places: PlaceData[] }>) {
 			state.places = action.payload.places;
 		},
@@ -40,4 +41,9 @@ const mapSlice = createSlice({
 });
 
 export const mapReducer = mapSlice.reducer;
-export const { setPlaces, setCheckIns, updateVote } = mapSlice.actions;
+export const {
+	setPlaces,
+	setCheckIns,
+	updateVote,
+	reset: resetMapState,
+} = mapSlice.actions;

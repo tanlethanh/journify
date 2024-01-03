@@ -4,6 +4,8 @@ import auth, { firebase } from '@react-native-firebase/auth';
 import type { User } from '@react-native-google-signin/google-signin';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 
+import { resetAppState, resetMapState, store } from '../store';
+
 GoogleSignin.configure({
 	webClientId: Config.WEB_CLIENT_ID,
 });
@@ -32,9 +34,12 @@ export const useAuth = () => {
 
 	useEffect(() => {
 		const subscriber = auth().onAuthStateChanged(async (user) => {
-			console.log(user, '<--');
-			console.log(await user?.getIdToken(true), '<-- token id');
-			if (user) setUser(user as never);
+			// console.log(user, '<--');
+			// console.log(await user?.getIdToken(true), '<-- token id');
+			if (user) {
+				setUser(user as never);
+			}
+
 			if (initializing) setInitializing(false);
 		});
 
@@ -46,4 +51,10 @@ export const useAuth = () => {
 
 export const getUser = (): WrappedUser | null => {
 	return firebase.auth().currentUser as never;
+};
+
+export const logOut = async () => {
+	await auth().signOut();
+	store.dispatch(resetAppState());
+	store.dispatch(resetMapState());
 };
