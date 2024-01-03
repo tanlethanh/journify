@@ -37,6 +37,9 @@ const mapSlice = createSlice({
 				}
 			}
 		},
+		addPlace(state, action: PayloadAction<{ place: PlaceData }>) {
+			state.places = [...state.places, action.payload.place];
+		},
 	},
 });
 
@@ -46,4 +49,5 @@ export const {
 	setCheckIns,
 	updateVote,
 	reset: resetMapState,
+	addPlace,
 } = mapSlice.actions;

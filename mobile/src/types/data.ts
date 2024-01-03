@@ -1,10 +1,12 @@
 export type PlaceData = {
-	id: string;
+	id: number;
 	name: string;
 	handle: string;
+	caption: string;
 	location: Location;
 	imageUrl: string;
 	checkInCount: number;
+	real?: boolean;
 };
 
 export type Location = {

@@ -12,9 +12,11 @@ import {
 } from 'react-native';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import { launchImageLibrary } from 'react-native-image-picker';
+import { useDispatch } from 'react-redux';
 import { FileImage } from 'lucide-react-native';
 
 import { postDiscovery } from '@/api/posts';
+import { addPlace } from '@/store/map';
 import { useLocation } from '@/utils/map';
 
 const Discovery = () => {
@@ -25,6 +27,7 @@ const Discovery = () => {
 	const [image, setPostImage] = useState<string | null>(null);
 	const [loading, setLoading] = useState(false);
 	const { region } = useLocation();
+	const dispatch = useDispatch();
 
 	const handleImagePick = () => {
 		launchImageLibrary(
@@ -40,7 +43,7 @@ const Discovery = () => {
 
 	const handleSubmit = async () => {
 		setLoading(true);
-		await postDiscovery({
+		const discovery = await postDiscovery({
 			name,
 			handle,
 			caption,
@@ -48,6 +51,25 @@ const Discovery = () => {
 			latitude: region.latitude,
 			longitude: region.longitude,
 		});
+		if (discovery) {
+			dispatch(
+				addPlace({
+					place: {
+						id: discovery.id,
+						name: discovery.name,
+						handle: discovery.handle,
+						caption: discovery.caption,
+						imageUrl: discovery.imageURL,
+						location: {
+							latitude: discovery.latitude,
+							longitude: discovery.longitude,
+						},
+						real: true,
+						checkInCount: 0,
+					},
+				}),
+			);
+		}
 		setLoading(false);
 		setCaption('');
 		setPostImage(null);
