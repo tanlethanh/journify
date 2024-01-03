@@ -31,7 +31,9 @@ export const useAuth = () => {
 	const [user, setUser] = useState<WrappedUser>();
 
 	useEffect(() => {
-		const subscriber = auth().onAuthStateChanged((user) => {
+		const subscriber = auth().onAuthStateChanged(async (user) => {
+			console.log(user, '<--');
+			console.log(await user?.getIdToken(true), '<-- token id');
 			if (user) setUser(user as never);
 			if (initializing) setInitializing(false);
 		});
