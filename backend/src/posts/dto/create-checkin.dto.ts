@@ -32,9 +32,11 @@ export class CreatePlaceDto {
 	@IsString()
 	imageURL: string;
 
-	@IsString()
+	@ApiProperty()
+	@IsNumber()
 	latitude: number;
 
-	@IsString()
+	@ApiProperty()
+	@IsNumber()
 	longitude: number;
 }
