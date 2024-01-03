@@ -1,10 +1,13 @@
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import * as morgan from 'morgan';
 
 import { AppModule } from './app.module';
 
 async function bootstrap() {
 	const app = await NestFactory.create(AppModule);
+	app.enableCors({ origin: '*', allowedHeaders: '*' });
+	app.use(morgan('tiny'));
 
 	const config = new DocumentBuilder()
 		.addBearerAuth()
@@ -19,6 +22,8 @@ async function bootstrap() {
 	const document = SwaggerModule.createDocument(app, config);
 	SwaggerModule.setup('docs', app, document);
 
-	await app.listen(process.env.PORT || 8080);
+	const port = process.env.PORT || 3003;
+	console.log('app running', port);
+	await app.listen(port);
 }
 bootstrap();

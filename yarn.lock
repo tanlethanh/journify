@@ -4042,6 +4042,7 @@ __metadata:
     "@prisma/client": "npm:^5.7.0"
     "@types/express": "npm:^4.17.17"
     "@types/jest": "npm:^29.5.2"
+    "@types/morgan": "npm:^1.9.9"
     "@types/node": "npm:^20.3.1"
     "@types/supertest": "npm:^2.0.12"
     "@typescript-eslint/eslint-plugin": "npm:^6.0.0"
@@ -4052,6 +4053,7 @@ __metadata:
     eslint-plugin-prettier: "npm:^5.0.0"
     firebase-admin: "npm:^12.0.0"
     jest: "npm:^29.5.0"
+    morgan: "npm:^1.10.0"
     prettier: "npm:^3.0.0"
     prisma: "npm:^5.7.0"
     reflect-metadata: "npm:^0.1.13"
@@ -6315,6 +6317,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/morgan@npm:^1.9.9":
+  version: 1.9.9
+  resolution: "@types/morgan@npm:1.9.9"
+  dependencies:
+    "@types/node": "npm:*"
+  checksum: 2b310c6f7c3cd1d0e19fd8c644c6f4edd58415bb88be78cc8bea853c02b165a76e6d7ade91f5b92c124e9b9cf3a810c23e400392d5e30118988f68575dcd1ed4
+  languageName: node
+  linkType: hard
+
 "@types/node@npm:*, @types/node@npm:>=12.12.47, @types/node@npm:>=13.7.0, @types/node@npm:^20, @types/node@npm:^20.10.3, @types/node@npm:^20.3.1":
   version: 20.10.6
   resolution: "@types/node@npm:20.10.6"
@@ -7783,6 +7794,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"basic-auth@npm:~2.0.1":
+  version: 2.0.1
+  resolution: "basic-auth@npm:2.0.1"
+  dependencies:
+    safe-buffer: "npm:5.1.2"
+  checksum: 05f56db3a0fc31c89c86b605231e32ee143fb6ae38dc60616bc0970ae6a0f034172def99e69d3aed0e2c9e7cac84e2d63bc51a0b5ff6ab5fc8808cc8b29923c1
+  languageName: node
+  linkType: hard
+
 "bignumber.js@npm:^9.0.0":
   version: 9.1.2
   resolution: "bignumber.js@npm:9.1.2"
@@ -9018,7 +9038,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"depd@npm:2.0.0":
+"depd@npm:2.0.0, depd@npm:~2.0.0":
   version: 2.0.0
   resolution: "depd@npm:2.0.0"
   checksum: 58bd06ec20e19529b06f7ad07ddab60e504d9e0faca4bd23079fac2d279c3594334d736508dc350e06e510aba5e22e4594483b3a6562ce7c17dd797f4cc4ad2c
@@ -13935,6 +13955,19 @@ __metadata:
   dependencies:
     obliterator: "npm:^2.0.1"
   checksum: a538945ea547976136ee6e16f224c0a50983143619941f6c4d2c82159e36eb6f8ee93d69d3a1267038fc5b16f88e2d43390023de10dfb145fa15c5e2befa1cdf
+  languageName: node
+  linkType: hard
+
+"morgan@npm:^1.10.0":
+  version: 1.10.0
+  resolution: "morgan@npm:1.10.0"
+  dependencies:
+    basic-auth: "npm:~2.0.1"
+    debug: "npm:2.6.9"
+    depd: "npm:~2.0.0"
+    on-finished: "npm:~2.3.0"
+    on-headers: "npm:~1.0.2"
+  checksum: 684db061daca28f8d8e3bfd50bd0d21734401b46f74ea76f6df7785d45698fcd98f6d3b81a6bad59f8288c429183afba728c428e8f66d2e8c30fd277af3b5b3a
   languageName: node
   linkType: hard
 

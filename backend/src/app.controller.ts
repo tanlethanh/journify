@@ -15,10 +15,8 @@ export class AppController {
 	) {}
 
 	@Get()
-	@ApiBearerAuth()
-	@UseGuards(AuthGuard)
-	getHello(@Auth() user: UserAuth): string {
-		return `Hello ${user.name}, we're Zenonian Labs`;
+	getHello(): string {
+		return `Hello, we're Zenonian Labs`;
 	}
 
 	@Get('feed')
