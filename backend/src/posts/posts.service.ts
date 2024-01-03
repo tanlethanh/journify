@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import type { CheckIn, Post, Prisma } from '@prisma/client';
+import type { CheckIn, Place, Prisma } from '@prisma/client';
 
 import { PrismaService } from '../prisma.service';
 
@@ -7,23 +7,25 @@ import { PrismaService } from '../prisma.service';
 export class PostsService {
 	constructor(private prisma: PrismaService) {}
 
-	async post(
-		postWhereUniqueInput: Prisma.PostWhereUniqueInput,
-	): Promise<Post | null> {
-		return this.prisma.post.findUnique({
-			where: postWhereUniqueInput,
+	async createDiscovery(data: Prisma.PlaceCreateInput): Promise<Place> {
+		return this.prisma.place.create({ data });
+	}
+
+	async getPlace(where: Prisma.PlaceWhereUniqueInput): Promise<Place | null> {
+		return this.prisma.place.findUnique({
+			where: where,
 		});
 	}
 
-	async posts(params: {
+	async getPlaces(params: {
 		skip?: number;
 		take?: number;
-		cursor?: Prisma.PostWhereUniqueInput;
-		where?: Prisma.PostWhereInput;
-		orderBy?: Prisma.PostOrderByWithRelationInput;
-	}): Promise<Post[]> {
+		cursor?: Prisma.PlaceWhereUniqueInput;
+		where?: Prisma.PlaceWhereInput;
+		orderBy?: Prisma.PlaceOrderByWithRelationInput;
+	}): Promise<Place[]> {
 		const { skip, take, cursor, where, orderBy } = params;
-		return this.prisma.post.findMany({
+		return this.prisma.place.findMany({
 			skip,
 			take,
 			cursor,
@@ -32,30 +34,65 @@ export class PostsService {
 		});
 	}
 
-	async createPost(data: Prisma.PostCreateInput): Promise<Post> {
-		return this.prisma.post.create({
-			data,
-		});
-	}
-	////////////
-
-	async createCheckin(data: Prisma.CheckInCreateInput): Promise<CheckIn> {
-		return this.prisma.checkIn.create({ data });
-	}
-	////////////
-	async updatePost(params: {
-		where: Prisma.PostWhereUniqueInput;
-		data: Prisma.PostUpdateInput;
-	}): Promise<Post> {
+	async updatePlace(params: {
+		where: Prisma.PlaceWhereUniqueInput;
+		data: Prisma.PlaceUpdateInput;
+	}): Promise<Place> {
 		const { data, where } = params;
-		return this.prisma.post.update({
+		return this.prisma.place.update({
 			data,
 			where,
 		});
 	}
 
-	async deletePost(where: Prisma.PostWhereUniqueInput): Promise<Post> {
-		return this.prisma.post.delete({
+	async deletePlace(where: Prisma.PlaceWhereUniqueInput): Promise<Place> {
+		return this.prisma.place.delete({
+			where,
+		});
+	}
+
+	async getCheckIn(
+		where: Prisma.CheckInWhereUniqueInput,
+	): Promise<CheckIn | null> {
+		return this.prisma.checkIn.findUnique({
+			where: where,
+		});
+	}
+
+	async getCheckIns(params: {
+		skip?: number;
+		take?: number;
+		cursor?: Prisma.CheckInWhereUniqueInput;
+		where?: Prisma.CheckInWhereInput;
+		orderBy?: Prisma.CheckInOrderByWithRelationInput;
+	}): Promise<CheckIn[]> {
+		const { skip, take, cursor, where, orderBy } = params;
+		return this.prisma.checkIn.findMany({
+			skip,
+			take,
+			cursor,
+			where,
+			orderBy,
+		});
+	}
+
+	async createCheckin(data: Prisma.CheckInCreateInput): Promise<CheckIn> {
+		return this.prisma.checkIn.create({ data });
+	}
+
+	async updateCheckin(params: {
+		where: Prisma.CheckInWhereUniqueInput;
+		data: Prisma.CheckInUpdateInput;
+	}): Promise<CheckIn> {
+		const { data, where } = params;
+		return this.prisma.checkIn.update({
+			data,
+			where,
+		});
+	}
+
+	async deleteCheckIn(where: Prisma.CheckInWhereUniqueInput): Promise<CheckIn> {
+		return this.prisma.checkIn.delete({
 			where,
 		});
 	}

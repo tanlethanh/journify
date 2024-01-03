@@ -11,26 +11,34 @@ datasource db {
 }
 
 model User {
-  id          Int     @id @default(autoincrement())
-  firebaseUID String  @unique
-  email       String  @unique
+  id          Int       @id @default(autoincrement())
+  firebaseUID String    @unique
+  email       String    @unique
   name        String
   onboarding  Boolean
-  posts       Post[]
+  checkIns    CheckIn[]
+  places      Place[]
 }
 
-model Post {
-  id        Int     @id @default(autoincrement())
-  title     String
-  checkIn   String
-  content   String?
-  published Boolean @default(false)
-  author    User    @relation(fields: [authorId], references: [id])
-  authorId  Int
+model Place {
+  id          Int       @id @default(autoincrement())
+  name        String
+  handle      String
+  upvote      Int
+  downvote    Int
+  impressions Int
+  imageURL    String
+  checkIns    CheckIn[]
+  owner       User      @relation(fields: [ownerId], references: [id])
+  ownerId     Int
 }
 
 model CheckIn {
-  id        Int     @id @default(autoincrement())
-  caption     String
-  imageURL   String?
+  id       Int     @id @default(autoincrement())
+  caption  String
+  imageURL String?
+  place    Place   @relation(fields: [placeId], references: [id])
+  placeId  Int
+  author   User    @relation(fields: [authorId], references: [id])
+  authorId Int
 }
