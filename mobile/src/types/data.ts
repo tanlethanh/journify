@@ -30,8 +30,8 @@ export type Reply = {
 };
 
 export type CheckInData = {
-	id: string;
-	placeId: string;
+	id: number;
+	placeId: number;
 	date: string;
 	user: UserInfo;
 	upvote: number;

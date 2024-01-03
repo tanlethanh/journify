@@ -18,7 +18,7 @@ export const Map = () => {
 	const { region } = useLocation();
 	const { places } = usePlaces();
 	const { top } = useSafeAreaInsets();
-	const currentPlace = undefined;
+	const currentPlace = places.find((ele) => ele.real);
 	const navigation = useNavigation();
 	const searchBarStyle = { ...styles.searchBar, top };
 

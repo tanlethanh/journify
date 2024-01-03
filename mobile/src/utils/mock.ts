@@ -71,8 +71,8 @@ export const getMockedPlaces = (loc: Location): PlaceData[] => {
 
 export const mockedCheckIns: CheckInData[] = [
 	{
-		id: '1',
-		placeId: '1',
+		id: -1,
+		placeId: -1,
 		date: '13 Nov',
 		caption:
 			'Nestled in tranquility, this chill haven whispers serenity. Soft breezes dance with gentle sunshine, creating a symphony of calm. Time slows, and worries melt away in the embrace of peaceful simplicity.',
@@ -121,8 +121,8 @@ export const mockedCheckIns: CheckInData[] = [
 		],
 	},
 	{
-		id: '2',
-		placeId: '1',
+		id: -2,
+		placeId: -1,
 		date: '20 Dec',
 		caption:
 			"Chillin' like a villain in my own little laughter lair. 😎🤣 #SeriousAboutChillaxing",

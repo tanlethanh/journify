@@ -98,6 +98,9 @@ export class PostsController {
 		return this.postsService.createCheckin({
 			caption,
 			imageURL,
+			upvote: 0,
+			downvote: 0,
+			impressions: 0,
 			place: {
 				connect: {
 					id: placeId,

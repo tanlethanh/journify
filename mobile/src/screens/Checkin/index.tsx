@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import {
+	ActivityIndicator,
 	Button,
 	Image,
 	StyleSheet,
@@ -11,27 +12,72 @@ import {
 } from 'react-native';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import { launchImageLibrary } from 'react-native-image-picker';
+import { useDispatch } from 'react-redux';
 import { FileImage } from 'lucide-react-native';
 
-import { postCheckIn } from '@/utils/http';
+import { postCheckIn } from '@/api/posts';
+import { addCheckIn } from '@/store/map';
+import { useAuth } from '@/utils/auth';
+import { usePlaces } from '@/utils/map';
+
 const CheckIn = () => {
 	const isDarkMode = useColorScheme() === 'dark';
-
 	const [postText, setPostText] = useState<string>('');
 	const [postImage, setPostImage] = useState<string | null>(null);
+	const [loading, setLoading] = useState(false);
+	const { places } = usePlaces();
+	const dispatch = useDispatch();
+	const { user } = useAuth();
+	const currentPlace = places.find((e) => e.real === true);
 
 	const handleImagePick = () => {
-		launchImageLibrary({ mediaType: 'photo' }, (response) => {
-			if (response.assets?.length) {
-				setPostImage(response.assets[0].uri as string);
-			}
-		});
+		launchImageLibrary(
+			{ mediaType: 'photo', includeBase64: true },
+			(response) => {
+				if (response.assets?.length) {
+					const uri = 'data:image/png;base64,' + response.assets[0].base64;
+					setPostImage(uri);
+				}
+			},
+		);
 	};
-	const handleSubmit = () => {
-		postCheckIn({
-			caption: postText,
-			imageURL: postImage,
-		});
+
+	const handleSubmit = async () => {
+		setLoading(true);
+		if (currentPlace) {
+			const checkin = await postCheckIn({
+				caption: postText,
+				imageURL: postImage,
+				placeId: currentPlace?.id as number,
+			});
+			if (checkin) {
+				dispatch(
+					addCheckIn({
+						checkIn: {
+							id: checkin?.id,
+							caption: checkin?.caption,
+							placeId: checkin?.placeId,
+							date: '3 Jan',
+							imageUrl: checkin?.imageURL,
+							user: {
+								name: user?.displayName as string,
+								handle: '@me',
+								tick: true,
+								image: user?.photoURL as string,
+								discovery: 100,
+							},
+							upvote: checkin?.upvote,
+							downvote: checkin?.downvote,
+							impressions: checkin?.impressions,
+							replyCount: 0,
+						},
+					}),
+				);
+			}
+		} else {
+			console.log('not found current place');
+		}
+		setLoading(false);
 		setPostText('');
 		setPostImage(null);
 	};
@@ -52,7 +98,11 @@ const CheckIn = () => {
 				<FileImage color={isDarkMode ? Colors.white : Colors.black} />
 				<Text>Add Image</Text>
 			</TouchableOpacity>
-			<Button title="Post" onPress={handleSubmit} />
+			{loading ? (
+				<ActivityIndicator />
+			) : (
+				<Button title="Post" onPress={handleSubmit} />
+			)}
 		</View>
 	);
 };

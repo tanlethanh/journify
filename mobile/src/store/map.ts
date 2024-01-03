@@ -12,7 +12,9 @@ const mapSlice = createSlice({
 	name: 'map',
 	initialState,
 	reducers: {
-		reset: () => initialState,
+		reset: () => {
+			return initialState;
+		},
 		setPlaces(state, action: PayloadAction<{ places: PlaceData[] }>) {
 			state.places = action.payload.places;
 		},
@@ -22,7 +24,7 @@ const mapSlice = createSlice({
 		updateVote(
 			state,
 			action: PayloadAction<{
-				checkInId: string;
+				checkInId: number;
 				amount: number;
 				type: 'up' | 'down';
 			}>,
@@ -40,6 +42,9 @@ const mapSlice = createSlice({
 		addPlace(state, action: PayloadAction<{ place: PlaceData }>) {
 			state.places = [...state.places, action.payload.place];
 		},
+		addCheckIn(state, action: PayloadAction<{ checkIn: CheckInData }>) {
+			state.checkIns = [...state.checkIns, action.payload.checkIn];
+		},
 	},
 });
 
@@ -50,4 +55,5 @@ export const {
 	updateVote,
 	reset: resetMapState,
 	addPlace,
+	addCheckIn,
 } = mapSlice.actions;

@@ -37,11 +37,14 @@ model Place {
 }
 
 model CheckIn {
-  id       Int     @id @default(autoincrement())
-  caption  String
-  imageURL String?
-  place    Place   @relation(fields: [placeId], references: [id])
-  placeId  Int
-  author   User    @relation(fields: [authorId], references: [id])
-  authorId Int
+  id          Int     @id @default(autoincrement())
+  caption     String
+  upvote      Int
+  downvote    Int
+  impressions Int
+  imageURL    String?
+  place       Place   @relation(fields: [placeId], references: [id])
+  placeId     Int
+  author      User    @relation(fields: [authorId], references: [id])
+  authorId    Int
 }

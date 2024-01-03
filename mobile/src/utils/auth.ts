@@ -35,8 +35,6 @@ export const useAuth = () => {
 
 	useEffect(() => {
 		const subscriber = auth().onAuthStateChanged(async (user) => {
-			// console.log(user, '<--');
-			// console.log(await user?.getIdToken(true), '<-- token id');
 			if (user) {
 				setUser(user as never);
 			}

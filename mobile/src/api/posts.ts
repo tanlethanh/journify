@@ -5,17 +5,26 @@ import { Axios } from './axios';
 type CheckInData = {
 	caption: string;
 	imageURL: string | null;
-	placeID: number;
+	placeId: number;
+};
+
+type CheckInResponse = {
+	id: number;
+	caption: string;
+	upvote: number;
+	downvote: number;
+	impressions: number;
+	imageURL: string;
+	placeId: number;
+	authorId: number;
 };
 
 export const postCheckIn = async (checkInData: CheckInData) => {
-	console.log(checkInData, '<-- check in data');
 	try {
-		const response = await Axios.post('posts', {
+		const response = await Axios.post('posts/checkins', {
 			...checkInData,
-			type: 'checkin',
 		});
-		return response;
+		return response.data as CheckInResponse;
 	} catch (error) {
 		console.log('Error posting data: ', (error as AxiosError).response?.data);
 	}
