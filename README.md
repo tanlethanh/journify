@@ -25,7 +25,3 @@ cd ios && pod install
 At mobile folder, to start application, you can use `yarn start` or `yarn android`, `yarn ios`
 
 ## References
-
-### Microservice
-
-- [https://kylegenebrown.medium.com/whats-the-right-size-for-a-microservice-bf1740370d47](https://kylegenebrown.medium.com/whats-the-right-size-for-a-microservice-bf1740370d47)
