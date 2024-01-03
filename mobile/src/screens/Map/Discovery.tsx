@@ -2,13 +2,15 @@ import type { FC } from 'react';
 import type { ViewProps } from 'react-native';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
-type Props = ViewProps;
+type Props = ViewProps & {
+	onPress?: () => void;
+};
 
-export const Discovery: FC<Props> = ({ style, ...props }) => {
+export const Discovery: FC<Props> = ({ style, onPress, ...props }) => {
 	return (
 		<View style={[styles.container, style]} {...props}>
 			<Text>{"You are the first one here! Let's discovery this place"}</Text>
-			<TouchableOpacity style={styles.button}>
+			<TouchableOpacity style={styles.button} onPress={onPress}>
 				<Text style={styles.buttonText}>Discovery</Text>
 			</TouchableOpacity>
 		</View>

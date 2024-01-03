@@ -18,12 +18,16 @@ export const Map = () => {
 	const { region } = useLocation();
 	const { places } = usePlaces();
 	const { top } = useSafeAreaInsets();
-	const currentPlace = places[0];
+	const currentPlace = undefined;
 	const navigation = useNavigation();
 	const searchBarStyle = { ...styles.searchBar, top };
 
 	const handlePressPlace = (place: PlaceData) => {
 		showDetailPlaceModal(place);
+	};
+
+	const handlePressDiscovery = () => {
+		navigation.navigate('Discovery' as never);
 	};
 
 	const handlePressCheckIn = () => {
@@ -66,7 +70,7 @@ export const Map = () => {
 					onPressCheckIn={handlePressCheckIn}
 				/>
 			) : (
-				<Discovery style={styles.bottomView} />
+				<Discovery style={styles.bottomView} onPress={handlePressDiscovery} />
 			)}
 		</View>
 	);

@@ -13,7 +13,11 @@ type Props = {
 export const User: FC<Props> = ({ imageUrl, location }) => {
 	return (
 		<Marker coordinate={location} tracksViewChanges={false}>
-			<Image style={styles.image} source={{ uri: imageUrl }} />
+			{imageUrl ? (
+				<Image style={styles.image} source={{ uri: imageUrl }} />
+			) : (
+				<View style={styles.image} />
+			)}
 			<View style={styles.iconContainer}>
 				<MapPin fill="#3478F6" color="#FFFFFF" />
 			</View>
@@ -30,6 +34,7 @@ const styles = StyleSheet.create({
 		borderRadius: 20,
 		borderWidth: 2,
 		borderColor: '#24B24C',
+		backgroundColor: 'gray',
 	},
 	iconContainer: {
 		position: 'absolute',
