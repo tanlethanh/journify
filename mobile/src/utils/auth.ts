@@ -26,6 +26,7 @@ export const signInWithGoogle = async () => {
 type WrappedUser = User & {
 	displayName: string;
 	photoURL: string;
+	uid: string;
 };
 
 export const useAuth = () => {

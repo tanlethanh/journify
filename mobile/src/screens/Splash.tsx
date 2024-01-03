@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { ImageBackground, StatusBar, StyleSheet, View } from 'react-native';
 import Animated, { FadeInDown } from 'react-native-reanimated';
-import { useNavigation } from '@react-navigation/native';
+import { useIsFocused, useNavigation } from '@react-navigation/native';
 
 import { useAuth } from '../utils';
 
@@ -9,8 +9,10 @@ const Splash = () => {
 	const navigation = useNavigation();
 	const { initializing, user } = useAuth();
 	const [waiting, setWaiting] = useState(true);
+	const isFocus = useIsFocused();
 
 	useEffect(() => {
+		if (!isFocus) return;
 		if (waiting || initializing) return;
 		if (user) {
 			navigation.navigate('MainNavigator' as never);

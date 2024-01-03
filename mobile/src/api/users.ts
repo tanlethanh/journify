@@ -1,3 +1,5 @@
+import type { AxiosError } from 'axios';
+
 import { Axios } from './axios';
 
 type UserResponse = {
@@ -8,12 +10,16 @@ type UserResponse = {
 	onboarding: boolean;
 };
 
-export const getUser = async () => {
+export const getUserByFirebaseUID = async (uid: string) => {
 	try {
-		const res = await Axios.get('users');
+		const res = await Axios.get('/users', {
+			params: {
+				firebaseUID: uid,
+			},
+		});
 		return res.data as UserResponse;
 	} catch (error) {
-		console.log('get user error', error);
+		console.log('get user error', (error as AxiosError).response?.data);
 	}
 };
 
@@ -22,7 +28,7 @@ export const initUser = async () => {
 		const res = await Axios.post('users');
 		return res.data as UserResponse;
 	} catch (error) {
-		console.log('init user error', error);
+		console.log('init user error', (error as AxiosError).response?.data);
 	}
 };
 

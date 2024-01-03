@@ -1,10 +1,5 @@
 import type { CanActivate, ExecutionContext } from '@nestjs/common';
-import {
-	ForbiddenException,
-	Inject,
-	Injectable,
-	UnauthorizedException,
-} from '@nestjs/common';
+import { Inject, Injectable, UnauthorizedException } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
 import type { User } from '@prisma/client';
 import { app } from 'firebase-admin';
@@ -62,10 +57,11 @@ export class AuthGuard implements CanActivate {
 			where: { firebaseUID: uid },
 		});
 
-		if (!user)
-			throw new ForbiddenException(
+		if (!user) {
+			throw new UnauthorizedException(
 				`the user is not initialized, email ${authToken.email} uid ${authToken.uid}`,
 			);
+		}
 
 		request.user = user;
 

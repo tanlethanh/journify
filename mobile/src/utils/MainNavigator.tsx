@@ -71,12 +71,16 @@ export const MainNavigator = () => {
 				options={{
 					headerShown: false,
 					tabBarLabel: profileName || 'User',
-					tabBarIcon: ({ color }) =>
-						user?.photoURL ? (
-							<Image style={styles.avatar} source={{ uri: user.photoURL }} />
+					tabBarIcon: ({ color }) => {
+						return user?.photoURL ? (
+							<Image
+								style={styles.avatar}
+								source={{ uri: user.photoURL || '' }}
+							/>
 						) : (
 							<SignpostBigIcon color={color} />
-						),
+						);
+					},
 				}}
 			/>
 		</Tab.Navigator>

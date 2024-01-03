@@ -12,6 +12,8 @@ import { useNavigation } from '@react-navigation/native';
 
 import { signInWithGoogle, useAuth } from '../utils';
 
+import { getUserByFirebaseUID, initUser } from '@/api';
+
 const SignIn = () => {
 	const { user } = useAuth();
 	const navigation = useNavigation();
@@ -25,7 +27,18 @@ const SignIn = () => {
 	};
 
 	useEffect(() => {
-		if (user) navigation.navigate('MainNavigator' as never);
+		(async () => {
+			if (!user) return;
+			const resUser = await getUserByFirebaseUID(user.uid);
+			if (!resUser) {
+				await initUser();
+				navigation.navigate('FirstOnBoarding' as never);
+			} else if (resUser.onboarding) {
+				navigation.navigate('MainNavigator' as never);
+			} else {
+				navigation.navigate('FirstOnBoarding' as never);
+			}
+		})();
 	}, [user]);
 
 	return (
