@@ -8,14 +8,14 @@ You need to firstly setup development environment follow [react-native cli guide
 ### Install dependencies
 
 ```bash
-// for android
+# for android
 cd mobile && yarn install
 ```
 
 To start iOS
 
 ```bash
-// for iOS
+# for iOS
 cd mobile && yarn install
 cd ios && pod install
 ```
