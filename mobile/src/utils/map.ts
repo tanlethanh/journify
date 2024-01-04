@@ -53,16 +53,12 @@ export const usePlaces = () => {
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		if (checkIns.length === 0) {
-			dispatch(setCheckIns({ checkIns: mockedCheckIns }));
-		}
+		dispatch(setCheckIns({ checkIns: mockedCheckIns }));
 	}, []);
 
 	useEffect(() => {
-		if (places.length === 0 || places.length === 5) {
-			const updatedPlaces = getMockedPlaces(region);
-			dispatch(setPlaces({ places: updatedPlaces }));
-		}
+		const updatedPlaces = getMockedPlaces(region);
+		dispatch(setPlaces({ places: updatedPlaces }));
 	}, [region]);
 
 	return { places, checkIns };

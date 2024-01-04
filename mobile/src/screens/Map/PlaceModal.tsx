@@ -42,7 +42,7 @@ export const PlaceModal: FC<Props> = ({ place }) => {
 		return checkIns.filter((c) => c.placeId === place.id);
 	}, [place, userState.votes]);
 
-	const handleVoteCheckIn = (id: string, type: 'up' | 'down') => {
+	const handleVoteCheckIn = (id: number, type: 'up' | 'down') => {
 		dispatch(vote({ id, vote: type }));
 
 		const latestVote = userState.votes[id];

@@ -28,7 +28,7 @@ const appSlice = createSlice({
 				longitude: action.payload.long,
 			};
 		},
-		vote(state, action: PayloadAction<{ id: string; vote: 'up' | 'down' }>) {
+		vote(state, action: PayloadAction<{ id: number; vote: 'up' | 'down' }>) {
 			const { id, vote } = action.payload;
 			const latestVote = state.user.votes[id];
 			if (vote === latestVote) {
