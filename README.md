@@ -3,7 +3,7 @@
 
 ## Setup
 
-You need to firstly setup development environment follow [react-native cli guide](https://reactnative.dev/docs/environment-setup)
+You need first to set the development environment following [react-native cli guide](https://reactnative.dev/docs/environment-setup)
 
 ### Install dependencies
 
@@ -22,6 +22,14 @@ cd ios && pod install
 
 ### Bootstrap
 
-At mobile folder, to start application, you can use `yarn start` or `yarn android`, `yarn ios`
+In the mobile folder, to start the application, you can use `yarn start` or `yarn android`, `yarn ios`
 
-## References
+### Backend
+
+We use NestJS to build a backend on EC2 AWS using Docker and Terraform, with Prisma ORM as Postgres db underlying (so you can use whatever is compatible with Prisma).
+
+You need to set up a local Postgres database or launch by Docker (we have not set up Docker development yet)
+
+Install dependencies by `yarn install`, and start the server by `yarn start:dev`, currently do not need `.env` because we use the default setup of NestJS and default credentials of Postgre database
+
+
