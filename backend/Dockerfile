@@ -42,4 +42,4 @@ COPY --from=builder --chown=node:node /app/dist/ ./dist/
 COPY --from=builder --chown=node:node /app/prisma ./prisma
 
 CMD ["npx", "prisma", "migrate", "deploy"]
-CMD ["node", "dist/main.js"]
+CMD ["node", "dist/src/main.js"]
