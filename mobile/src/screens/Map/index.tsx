@@ -46,6 +46,7 @@ export const Map = () => {
 					const handlePress = () => handlePressPlace(p);
 					return (
 						<Place
+							id={p.id}
 							key={p.id}
 							title={p.name}
 							location={p.location}

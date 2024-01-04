@@ -77,7 +77,7 @@ const Discovery = () => {
 
 	return (
 		<View style={styles.container}>
-			<Text>Name</Text>
+			<Text style={styles.title}>Name</Text>
 			<TextInput
 				style={styles.singleLineTextInput}
 				placeholder="Location"
@@ -85,7 +85,7 @@ const Discovery = () => {
 				onChangeText={setName}
 			/>
 
-			<Text>Handle</Text>
+			<Text style={styles.title}>Handle</Text>
 			<TextInput
 				style={styles.singleLineTextInput}
 				placeholder="@handle"
@@ -93,7 +93,7 @@ const Discovery = () => {
 				onChangeText={setHandle}
 			/>
 
-			<Text>Caption</Text>
+			<Text style={styles.title}>Caption</Text>
 			<TextInput
 				style={styles.textInput}
 				placeholder="What's on your mind?"
@@ -105,7 +105,7 @@ const Discovery = () => {
 			{image && <Image source={{ uri: image }} style={styles.imagePreview} />}
 			<TouchableOpacity onPress={handleImagePick} style={styles.attachment}>
 				<FileImage color={isDarkMode ? Colors.white : Colors.black} />
-				<Text>Add Image</Text>
+				<Text style={styles.title}>Add Image</Text>
 			</TouchableOpacity>
 			{loading ? (
 				<ActivityIndicator />
@@ -132,6 +132,7 @@ const styles = StyleSheet.create({
 		borderColor: '#D9D9D9',
 		borderWidth: 1,
 		borderRadius: 10,
+		color: '#000000',
 	},
 	textInput: {
 		backgroundColor: '#fff',
@@ -141,10 +142,14 @@ const styles = StyleSheet.create({
 		borderColor: '#D9D9D9',
 		borderWidth: 1,
 		borderRadius: 10,
+		color: '#000000',
 	},
 	attachment: {
 		flexDirection: 'row',
 		gap: 20,
+	},
+	title: {
+		color: '#000000',
 	},
 });
 

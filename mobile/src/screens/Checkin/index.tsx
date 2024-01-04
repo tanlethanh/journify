@@ -125,6 +125,7 @@ const styles = StyleSheet.create({
 		borderColor: '#D9D9D9',
 		borderWidth: 1,
 		borderRadius: 10,
+		color: '#000000',
 	},
 	attachment: {
 		flexDirection: 'row',

@@ -6,6 +6,7 @@ import { Marker } from 'react-native-maps';
 import type { Location } from '@/types';
 
 type Props = {
+	id: number;
 	title?: string;
 	image: ImageSourcePropType;
 	location: Location;
@@ -15,6 +16,7 @@ type Props = {
 };
 
 export const Place: FC<Props> = ({
+	id,
 	title,
 	image,
 	location,
@@ -24,6 +26,7 @@ export const Place: FC<Props> = ({
 }) => {
 	return (
 		<Marker
+			key={id}
 			style={styles.container}
 			coordinate={location}
 			onPress={onPress}
@@ -42,9 +45,8 @@ export const Place: FC<Props> = ({
 					<Text style={styles.tag}>{tagText}</Text>
 				</View>
 			)}
-			<View style={styles.titleContainer}>
-				<Text style={styles.title}>{title || 'Unknown'}</Text>
-			</View>
+
+			<Text style={styles.title}>{title || 'Unknown'}</Text>
 		</Marker>
 	);
 };
@@ -82,16 +84,11 @@ const styles = StyleSheet.create({
 		fontSize: 12,
 		color: '#FFFFFF',
 	},
-	titleContainer: {
-		position: 'absolute',
-		top: 60,
-		left: -14,
-		width: 80,
-	},
 	title: {
-		fontSize: 14,
+		maxWidth: 60,
+		fontSize: 12,
 		fontWeight: '800',
-		color: '#383737',
+		color: '#565656',
 		textAlign: 'center',
 	},
 });

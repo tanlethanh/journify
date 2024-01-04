@@ -9,7 +9,9 @@ type Props = ViewProps & {
 export const Discovery: FC<Props> = ({ style, onPress, ...props }) => {
 	return (
 		<View style={[styles.container, style]} {...props}>
-			<Text>{"You are the first one here! Let's discovery this place"}</Text>
+			<Text style={styles.title}>
+				{"You are the first one here! Let's discovery this place"}
+			</Text>
 			<TouchableOpacity style={styles.button} onPress={onPress}>
 				<Text style={styles.buttonText}>Discovery</Text>
 			</TouchableOpacity>
@@ -22,6 +24,9 @@ export default Discovery;
 const styles = StyleSheet.create({
 	container: {
 		gap: 14,
+	},
+	title: {
+		color: '#000000',
 	},
 	button: {
 		backgroundColor: '#1F41F4',
