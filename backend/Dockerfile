@@ -41,5 +41,6 @@ COPY --from=builder --chown=node:node /app/node_modules/ ./node_modules/
 COPY --from=builder --chown=node:node /app/dist/ ./dist/
 COPY --from=builder --chown=node:node /app/prisma ./prisma
 
+# the prisma migration did not run
 CMD ["npx", "prisma", "migrate", "deploy"]
 CMD ["node", "dist/src/main.js"]
