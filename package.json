@@ -6,7 +6,7 @@
   "workspaces": [
     "landing",
     "mobile",
-    "backend",
+    "api",
     "packages/*"
   ],
   "scripts": {

@@ -4027,9 +4027,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@journify/backend@workspace:backend":
+"@journify/backend@workspace:api":
   version: 0.0.0-use.local
-  resolution: "@journify/backend@workspace:backend"
+  resolution: "@journify/backend@workspace:api"
   dependencies:
     "@nestjs/cli": "npm:^10.0.0"
     "@nestjs/common": "npm:^10.0.0"
